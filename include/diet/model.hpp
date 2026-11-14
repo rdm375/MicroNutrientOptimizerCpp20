@@ -20,7 +20,9 @@ struct MacronutrientTotals {
 
 struct NutrientTarget {
     std::string_view name;
+    std::string_view unit;
     double minimum;
+    double display_scale;
     bool required;
 };
 
@@ -50,16 +52,16 @@ MacronutrientTotals whole_plate_macronutrients(
     const std::array<double, kFoodCount>& recipe);
 
 inline constexpr std::array<NutrientTarget, kNutrientCount> kNutrientTargets{{
-    {"Ca (mg)", 1000.0, true}, {"Cu (mg)", 0.9, true},
-    {"Fe (mg)", 8.0, true}, {"Mg (mg)", 350.0, true},
-    {"Mn (mg)", 2.3, true}, {"P (mg)", 700.0, true},
-    {"Potassium (mg)", 3400.0, true}, {"Se (mg)", 0.055, true},
-    {"Na (mg)", 0.0, false}, {"Zn (mg)", 11.0, true},
-    {"B1 (mg)", 1.2, true}, {"B2 (mg)", 1.3, true},
-    {"B3 (mg)", 16.0, true}, {"B6 (mg)", 1.3, true},
-    {"B12 (mg)", 0.0024, true}, {"A (mg)", 0.9, true},
-    {"C (mg)", 90.0, true}, {"D (mg)", 0.015, true},
-    {"E (mg)", 15.0, true}, {"Vitamin K (mg)", 0.12, true},
+    {"Calcium", "mg", 1000.0, 1.0, true}, {"Copper", "mg", 0.9, 1.0, true},
+    {"Iron", "mg", 8.0, 1.0, true}, {"Magnesium", "mg", 350.0, 1.0, true},
+    {"Manganese", "mg", 2.3, 1.0, true}, {"Phosphorus", "mg", 700.0, 1.0, true},
+    {"Potassium", "mg", 3400.0, 1.0, true}, {"Selenium", "µg", 0.055, 1000.0, true},
+    {"Sodium", "mg", 0.0, 1.0, false}, {"Zinc", "mg", 11.0, 1.0, true},
+    {"Vitamin B1", "mg", 1.2, 1.0, true}, {"Vitamin B2", "mg", 1.3, 1.0, true},
+    {"Vitamin B3", "mg", 16.0, 1.0, true}, {"Vitamin B6", "mg", 1.3, 1.0, true},
+    {"Vitamin B12", "µg", 0.0024, 1000.0, true}, {"Vitamin A", "µg RAE", 0.9, 1000.0, true},
+    {"Vitamin C", "mg", 90.0, 1.0, true}, {"Vitamin D", "µg", 0.015, 1000.0, true},
+    {"Vitamin E", "mg", 15.0, 1.0, true}, {"Vitamin K", "µg", 0.12, 1000.0, true},
 }};
 
 } // namespace diet

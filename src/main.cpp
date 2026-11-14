@@ -92,11 +92,16 @@ bool meets_targets(const diet::OptimizationModel& model,
                    const std::array<double, diet::kFoodCount>& recipe) {
     for (std::size_t i = 0; i < diet::kNutrientCount; ++i) {
         if (diet::kNutrientTargets[i].required &&
-            diet::total_nutrient(model, recipe, i) + 1e-6 < model.lower[i]) {
+            diet::total_nutrient(model, recipe, i) + model.lower[i] * 1e-8 < model.lower[i]) {
             return false;
         }
     }
     return diet::total_calories(model, recipe) <= model.calorie_limit + 1e-5;
+}
+
+bool converged(nlopt::result status) {
+    return status == nlopt::SUCCESS || status == nlopt::STOPVAL_REACHED ||
+           status == nlopt::FTOL_REACHED || status == nlopt::XTOL_REACHED;
 }
 
 } // namespace
@@ -185,12 +190,24 @@ int main(int argc, char** argv) {
 
     std::array<double, diet::kFoodCount> recipe{};
     std::copy(x.begin(), x.end(), recipe.begin());
-    const bool feasible = meets_targets(model, recipe);
+    bool bounds_valid = true;
+    for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
+        bounds_valid = bounds_valid && std::isfinite(x[i]) &&
+            x[i] >= lower_bounds[i] - 1e-7 && x[i] <= upper_bounds[i] + 1e-7;
+    }
+    const bool feasible = meets_targets(model, recipe) && bounds_valid;
+    const bool status_acceptable = converged(status) ||
+        (status == nlopt::ROUNDOFF_LIMITED && feasible);
 
     std::cout << std::fixed << std::setprecision(2);
     std::cout << "Recipe profile: " << (diverse_recipe ? "diverse" : "sparse") << '\n';
     std::cout << "Solver status: " << result_name(status) << " (" << status << ")\n";
-    std::cout << "Feasible for all required minimums: " << (feasible ? "yes" : "no") << "\n\n";
+    std::cout << "Feasible for all required minimums and bounds: "
+              << (feasible ? "yes" : "no") << '\n';
+    std::cout << "Optimizer convergence: " << (converged(status) ? "yes" : "no") << '\n';
+    if (status == nlopt::ROUNDOFF_LIMITED && feasible) {
+        std::cout << "The feasible point is retained, but optimality is not confirmed by NLopt.\n";
+    }
     std::cout << "Salad ingredients\n";
     double salad_weight = 0.0;
     for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
@@ -228,19 +245,34 @@ int main(int argc, char** argv) {
     }
     std::cout << '\n';
 
-    std::cout << "Nutrient totals for salad + chicken\n";
+    std::cout << "Nutrient coverage for salad + chicken\n";
+    std::cout << "  " << std::left << std::setw(18) << "Nutrient"
+              << std::right << std::setw(13) << "Total"
+              << std::setw(13) << "Target"
+              << std::setw(13) << "Coverage"
+              << std::setw(18) << "Margin" << '\n';
     for (std::size_t i = 0; i < diet::kNutrientCount; ++i) {
         const double total = diet::total_nutrient(model, recipe, i);
-        std::cout << "  " << std::left << std::setw(10) << diet::kNutrientTargets[i].name
-                  << std::right << std::setw(11) << total;
+        const auto& target = diet::kNutrientTargets[i];
+        std::cout << "  " << std::left << std::setw(18) << target.name
+                  << std::right << std::setw(13) << total * target.display_scale;
         if (diet::kNutrientTargets[i].required) {
-            std::cout << "  target " << model.lower[i]
-                      << "  " << (total + 1e-6 >= model.lower[i] ? "met" : "SHORT");
+            const double coverage = total / model.lower[i] * 100.0;
+            const double raw_margin = total - model.lower[i];
+            const double margin = (std::abs(raw_margin) < model.lower[i] * 1e-10
+                                       ? 0.0
+                                       : raw_margin) * target.display_scale;
+            std::cout << std::setw(13) << model.lower[i] * target.display_scale
+                      << std::setw(12) << coverage << "%"
+                      << std::setw(13) << std::showpos << margin << std::noshowpos
+                      << " " << target.unit
+                      << "  " << (raw_margin >= -model.lower[i] * 1e-8 ? "met" : "SHORT");
         } else {
-            std::cout << "  tracked only";
+            std::cout << std::setw(13) << "—" << std::setw(13) << "—"
+                      << std::setw(13) << "tracked" << " " << target.unit;
         }
         std::cout << '\n';
     }
 
-    return feasible ? 0 : 3;
+    return feasible && status_acceptable ? 0 : 3;
 }

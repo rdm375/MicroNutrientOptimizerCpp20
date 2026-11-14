@@ -18,6 +18,9 @@ results can be compared under the same nutrient targets and calorie cap.
 - Protein, fat, total carbohydrate, fiber, and net carbs are reported for the
   salad, chicken, and whole plate. Net carbs are calculated as total
   carbohydrate minus fiber. These are not optimization constraints.
+- Required micronutrient output includes target coverage percentage and signed
+  margin from target. Selenium, B12, D, and K are displayed in micrograms so the
+  small source values are readable.
 - There are no blanket nutrient upper limits. The original `3 * rda_min`
   ceilings were arbitrary and made feasible recipes impossible. The program
   reports how far the recipe exceeds each minimum.
@@ -33,8 +36,10 @@ results can be compared under the same nutrient targets and calorie cap.
   portabella mushrooms remain an additional vitamin D source.
 
 The program minimizes salad mass, with a small smooth term to make the solver's
-choice stable when several mixes have similar mass. `ROUNDOFF_LIMITED` is
-accepted only if the returned recipe passes an explicit feasibility check.
+choice stable when several mixes have similar mass. A result is accepted only
+if nutrient targets, calorie limit, and ingredient bounds are feasible. A
+`ROUNDOFF_LIMITED` feasible point is reported, but explicitly marked as not
+having confirmed optimality.
 
 ## Feasible recipes from the current data
 
@@ -87,12 +92,24 @@ optimizer assigns them zero. These recipes depend on UV-treated mushrooms and
 the assumed chicken and egg portions; ordinary button mushrooms do not have
 the modeled vitamin D content.
 
+After correcting the plant-food vitamin A conversion, the current sparse and
+diverse profiles provide about 2,787 and 2,739 µg RAE, respectively (about
+310% and 304% of the model's 900 µg RAE target). The large spinach portions
+are the main contributor.
+
 ## Data caveats
 
 The original script's nutrient table and units have not been independently
 audited. In particular, the target array is a simple fixed set and does not
 vary by age, sex, pregnancy, or medical needs. This is an exploratory recipe
 model, not a clinical diet plan.
+
+Vitamin A is reported as retinol activity equivalents (RAE). The legacy
+plant-food IU values were previously converted with the retinol factor; they
+now use 0.05 µg RAE per IU for dietary beta-carotene, while the egg and cheddar
+entries retain the retinol-based conversion from the source table. This is a
+source-class approximation; USDA RAE values should replace the legacy IU data
+as the broader food table is audited.
 
 The chicken values are based on USDA SR Legacy chicken leg, meat only, cooked,
 roasted, scaled to 199 g edible portion. A bone-in leg quarter weighs more;
@@ -101,6 +118,8 @@ value is from USDA SR28 portabella mushrooms exposed to ultraviolet light.
 
 Sources:
 
+- [NIH ODS: Vitamin A IU-to-RAE conversion factors](https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/)
+- [USDA SR20: RAE conversion methods for plant and animal foods](https://www.ars.usda.gov/ARSUserFiles/80400525/Data/SR20/SR20_doc.pdf)
 - [USDA SR28: chicken leg, meat only, cooked, roasted](https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg05.pdf)
 - [USDA SR28: UV-exposed portabella mushrooms](https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg11.pdf)
 - [NIH ODS: Vitamin D food sources and adult recommended amounts](https://ods.od.nih.gov/factsheets/VitaminD-Consumer/)
