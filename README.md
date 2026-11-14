@@ -15,8 +15,9 @@ results can be compared under the same nutrient targets and calorie cap.
   nutrients. Vitamin B12 remains a target.
 - Sodium is included in the reported totals but has no minimum constraint and
   does not affect the objective.
-- Protein, fat, carbohydrate, and fiber are reported for the salad, chicken,
-  and whole plate. They are not optimization constraints.
+- Protein, fat, total carbohydrate, fiber, and net carbs are reported for the
+  salad, chicken, and whole plate. Net carbs are calculated as total
+  carbohydrate minus fiber. These are not optimization constraints.
 - There are no blanket nutrient upper limits. The original `3 * rda_min`
   ceilings were arbitrary and made feasible recipes impossible. The program
   reports how far the recipe exceeds each minimum.
@@ -77,6 +78,7 @@ Estimated macronutrient profile:
 | Fat | 47.19 | 45.28 | 15.52 | 62.71 | 60.80 |
 | Carbohydrate | 29.69 | 36.24 | 0.00 | 29.69 | 36.24 |
 | Fiber | 15.53 | 17.88 | 0.00 | 15.53 | 17.88 |
+| Net carbs | 14.16 | 18.36 | 0.00 | 14.16 | 18.36 |
 
 Both profiles meet all 19 enforced minimums in the current composition table,
 including 2.4 µg B12 and 15 µg vitamin D. The diverse profile includes every

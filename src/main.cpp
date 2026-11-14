@@ -206,16 +206,19 @@ int main(int argc, char** argv) {
 
     const auto salad_macros = diet::salad_macronutrients(model, recipe);
     const auto plate_macros = diet::whole_plate_macronutrients(model, recipe);
-    std::cout << "Macronutrient profile (g)\n";
+    std::cout << "Macronutrient profile (g; net carbs = total carbohydrate - fiber)\n";
     std::cout << "  " << std::left << std::setw(18) << "Macro"
               << std::right << std::setw(11) << "Salad"
               << std::setw(11) << "Chicken"
               << std::setw(13) << "Whole plate" << '\n';
-    const std::array<std::tuple<std::string_view, double, double, double>, 4> macro_rows{{
+    const std::array<std::tuple<std::string_view, double, double, double>, 5> macro_rows{{
         {"Protein", salad_macros.protein_g, model.fixed_macronutrients[0], plate_macros.protein_g},
         {"Fat", salad_macros.fat_g, model.fixed_macronutrients[1], plate_macros.fat_g},
         {"Carbohydrate", salad_macros.carbohydrate_g, model.fixed_macronutrients[2], plate_macros.carbohydrate_g},
         {"Fiber", salad_macros.fiber_g, model.fixed_macronutrients[3], plate_macros.fiber_g},
+        {"Net carbs", std::max(0.0, salad_macros.carbohydrate_g - salad_macros.fiber_g),
+         std::max(0.0, model.fixed_macronutrients[2] - model.fixed_macronutrients[3]),
+         std::max(0.0, plate_macros.carbohydrate_g - plate_macros.fiber_g)},
     }};
     for (const auto& [name, salad, chicken, plate] : macro_rows) {
         std::cout << "  " << std::left << std::setw(18) << name
