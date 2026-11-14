@@ -8,6 +8,11 @@ OptimizationModel make_model() {
         const auto& food = kFoods[food_index];
         const double serving_grams = food.source_values[0];
         model.calories_per_gram[food_index] = food.source_values[1] / serving_grams;
+        for (std::size_t macro_index = 0; macro_index < kMacronutrientCount; ++macro_index) {
+            const std::size_t source_row = macro_index + 2;
+            model.macronutrient_per_gram[macro_index][food_index] =
+                food.source_values[source_row] / serving_grams;
+        }
         for (std::size_t nutrient_index = 0; nutrient_index < kNutrientCount;
              ++nutrient_index) {
             const std::size_t source_row = nutrient_index + 6;
@@ -18,9 +23,23 @@ OptimizationModel make_model() {
 
     for (std::size_t i = 0; i < kNutrientCount; ++i) {
         model.lower[i] = kNutrientTargets[i].minimum;
-        // The original script used 3 * rda_min for every upper constraint.
-        model.upper[i] = 3.0 * model.lower[i];
-        model.target[i] = 2.0 * model.lower[i];
+    }
+
+    // Fixed accompaniment: 199 g cooked edible chicken leg meat, approximately
+    // one USDA SR28 leg measure. Values below are per 100 g edible portion.
+    constexpr std::array<double, kNutrientCount> chicken_per_100g{{
+        12.0, 0.061, 1.08, 24.0, 0.019, 205.0, 269.0, 0.0252, 99.0, 2.11,
+        0.091, 0.189, 6.053, 0.425, 0.00039, 0.007, 0.0, 0.0001, 0.16, 0.0036,
+    }};
+    for (std::size_t i = 0; i < kNutrientCount; ++i) {
+        model.fixed_nutrients[i] = chicken_per_100g[i] * model.fixed_chicken_grams / 100.0;
+    }
+    model.fixed_calories = 174.0 * model.fixed_chicken_grams / 100.0;
+    constexpr std::array<double, kMacronutrientCount> chicken_macros_per_100g{{
+        24.22, 7.80, 0.0, 0.0,
+    }};
+    for (std::size_t i = 0; i < kMacronutrientCount; ++i) {
+        model.fixed_macronutrients[i] = chicken_macros_per_100g[i] * model.fixed_chicken_grams / 100.0;
     }
     return model;
 }
@@ -29,6 +48,7 @@ double total_nutrient(const OptimizationModel& model,
                       const std::array<double, kFoodCount>& recipe,
                       std::size_t nutrient_index) {
     double total = 0.0;
+    total += model.fixed_nutrients[nutrient_index];
     for (std::size_t food_index = 0; food_index < kFoodCount; ++food_index) {
         total += model.nutrient_per_gram[nutrient_index][food_index] * recipe[food_index];
     }
@@ -42,6 +62,29 @@ double total_calories(const OptimizationModel& model,
         total += model.calories_per_gram[food_index] * recipe[food_index];
     }
     return total;
+}
+
+MacronutrientTotals salad_macronutrients(
+    const OptimizationModel& model,
+    const std::array<double, kFoodCount>& recipe) {
+    std::array<double, kMacronutrientCount> totals{};
+    for (std::size_t macro = 0; macro < kMacronutrientCount; ++macro) {
+        for (std::size_t food = 0; food < kFoodCount; ++food) {
+            totals[macro] += model.macronutrient_per_gram[macro][food] * recipe[food];
+        }
+    }
+    return {totals[0], totals[1], totals[2], totals[3]};
+}
+
+MacronutrientTotals whole_plate_macronutrients(
+    const OptimizationModel& model,
+    const std::array<double, kFoodCount>& recipe) {
+    auto totals = salad_macronutrients(model, recipe);
+    totals.protein_g += model.fixed_macronutrients[0];
+    totals.fat_g += model.fixed_macronutrients[1];
+    totals.carbohydrate_g += model.fixed_macronutrients[2];
+    totals.fiber_g += model.fixed_macronutrients[3];
+    return totals;
 }
 
 } // namespace diet
