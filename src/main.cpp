@@ -154,50 +154,17 @@ int main(int argc, char** argv) {
     const auto model = diet::make_model();
     SolverContext context{model};
 
-    // Feasible warm starts avoid asking SLSQP to discover feasibility from an
-    // arbitrary guess. The diverse profile has a positive floor for every food.
-    std::vector<double> x(diet::kFoodCount, 0.0);
-    const auto set_ingredient = [&x](std::string_view name, double grams) {
-        for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
-            if (diet::kFoods[i].name == name) {
-                x[i] = grams;
-                return;
-            }
-        }
-    };
-    if (diverse_recipe) {
-        set_ingredient("romaine lettuce", 30.0);
-        set_ingredient("collard greens", 20.0);
-        set_ingredient("spinach", 416.460617259367);
-        set_ingredient("roma tomatoes", 30.0);
-        set_ingredient("cucumbers", 20.0);
-        set_ingredient("red onion", 10.0);
-        set_ingredient("pine nuts", 5.0);
-        set_ingredient("pumpkin seeds", 5.549623997933);
-        set_ingredient("chia seeds", 5.0);
-        set_ingredient("sunflower seeds", 23.505970571981);
-        set_ingredient("shiitake mushrms", 10.0);
-        set_ingredient("wht btn mushrms", 10.0);
-        set_ingredient("brocoli", 20.0);
-        set_ingredient("bell pepper", 20.0);
-        set_ingredient("egg", 122.265492652492);
-        set_ingredient("chedar cheese", 33.012583730673);
-        set_ingredient("UV-exposed portabella mushrooms", 41.518323231137);
-    } else {
-        set_ingredient("spinach", 466.170369546159);
-        set_ingredient("pumpkin seeds", 16.203578784470);
-        set_ingredient("sunflower seeds", 26.454192892562);
-        set_ingredient("bell pepper", 33.482847835694);
-        set_ingredient("egg", 120.945824272317);
-        set_ingredient("chedar cheese", 34.730352072201);
-        set_ingredient("UV-exposed portabella mushrooms", 42.015137019240);
-    }
+    // Start from a generic 20 g portion of each ingredient, matching the
+    // original script's style. This is not a precomputed solution; the diverse
+    // profile raises any portion needed to satisfy its minimum bound.
+    std::vector<double> x(diet::kFoodCount, 20.0);
     std::vector<double> lower_bounds(diet::kFoodCount);
     std::vector<double> upper_bounds(diet::kFoodCount);
     for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
         lower_bounds[i] = diverse_recipe ? diet::kFoods[i].diverse_minimum_grams
                                          : diet::kFoods[i].minimum_grams;
         upper_bounds[i] = diet::kFoods[i].maximum_grams;
+        x[i] = std::clamp(x[i], lower_bounds[i], upper_bounds[i]);
     }
     const double starting_objective = objective_value(x);
     const double starting_salad_mass = std::accumulate(x.begin(), x.end(), 0.0);
@@ -232,10 +199,15 @@ int main(int argc, char** argv) {
     std::copy(x.begin(), x.end(), recipe.begin());
     const double final_objective = objective_value(x);
     const double final_salad_mass = std::accumulate(x.begin(), x.end(), 0.0);
-    const double objective_change = final_objective - starting_objective;
-    const double objective_reduction_percent = starting_objective != 0.0
-        ? -100.0 * objective_change / std::abs(starting_objective)
+    const double raw_objective_change = final_objective - starting_objective;
+    const double objective_change = std::abs(raw_objective_change) < 5e-11
+        ? 0.0
+        : raw_objective_change;
+    const double objective_change_percent = starting_objective != 0.0
+        ? 100.0 * objective_change / std::abs(starting_objective)
         : 0.0;
+    const double raw_mass_change = final_salad_mass - starting_salad_mass;
+    const double mass_change = std::abs(raw_mass_change) < 5e-11 ? 0.0 : raw_mass_change;
     const auto final_bounds = check_bounds(x, lower_bounds, upper_bounds);
     const bool feasible = meets_targets(model, recipe) && final_bounds.valid;
     const bool status_acceptable = converged(status) ||
@@ -259,10 +231,10 @@ int main(int argc, char** argv) {
     std::cout << "Objective (recomputed; scaled mass + tie-breaker): start " << starting_objective
               << ", final " << final_objective << ", change " << std::showpos
               << objective_change << std::noshowpos << " (" << std::showpos
-              << objective_reduction_percent << std::noshowpos << "% reduction)\n";
+              << objective_change_percent << std::noshowpos << "% relative change)\n";
     std::cout << "Salad mass change: " << starting_salad_mass << " g -> "
               << final_salad_mass << " g (" << std::showpos
-              << final_salad_mass - starting_salad_mass << std::noshowpos << " g)\n";
+              << mass_change << std::noshowpos << " g)\n";
     std::cout << std::setprecision(2);
     if (status == nlopt::ROUNDOFF_LIMITED && feasible) {
         std::cout << "The feasible point is retained, but optimality is not confirmed by NLopt.\n";

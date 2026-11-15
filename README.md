@@ -38,17 +38,18 @@ results can be compared under the same nutrient targets and calorie cap.
 The program minimizes salad mass, with a small smooth term to make the solver's
 choice stable when several mixes have similar mass. Each run reports the
 objective value at the initial and final recipes, its absolute change and
-percent reduction, final-minus-initial salad mass, and the solver status. It separately
-classifies feasibility and optimizer convergence. The ingredient audit prints
-the chosen amount and configured lower and upper bound for every ingredient,
-plus the maximum bound violation. A `ROUNDOFF_LIMITED` feasible point is
-reported, but explicitly marked as not having confirmed optimality.
+relative change, final-minus-initial salad mass, and the solver status. It
+separately classifies feasibility and optimizer convergence. The ingredient
+audit prints the chosen amount and configured lower and upper bound for every
+ingredient, plus the maximum bound violation. A `ROUNDOFF_LIMITED` feasible
+point is reported, but explicitly marked as not having confirmed optimality.
 
 ## Feasible recipes from the current data
 
-Independent linear feasibility solves against the same table found these
-recipes. The C++ optimizer uses them as feasible starting points and may adjust
-amounts slightly.
+Independent linear programs against the current table found these minimum-mass
+reference recipes. The C++ optimizer starts from a generic 20 g per-ingredient
+guess (raised to any diverse-profile minimums), so its output can be compared
+with these references instead of being seeded with the answer.
 
 | Ingredient | Sparse | Diverse |
 |---|---:|---:|
