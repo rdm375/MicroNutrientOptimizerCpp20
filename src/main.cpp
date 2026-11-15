@@ -1,4 +1,5 @@
 #include "diet/model.hpp"
+#include "diet/osqp_audit.hpp"
 
 #include <nlopt.hpp>
 
@@ -235,6 +236,43 @@ int main(int argc, char** argv) {
     std::cout << "Salad mass change: " << starting_salad_mass << " g -> "
               << final_salad_mass << " g (" << std::showpos
               << mass_change << std::noshowpos << " g)\n";
+
+    std::array<double, diet::kFoodCount> lower_array{};
+    std::array<double, diet::kFoodCount> upper_array{};
+    std::copy(lower_bounds.begin(), lower_bounds.end(), lower_array.begin());
+    std::copy(upper_bounds.begin(), upper_bounds.end(), upper_array.begin());
+    const auto qp = diet::solve_with_osqp(model, lower_array, upper_array);
+    std::cout << "\nIndependent OSQP QP audit\n";
+    if (!qp.error.empty()) {
+        std::cout << "OSQP audit error: " << qp.error << '\n';
+    }
+    std::cout << "OSQP status: " << (qp.status.empty() ? "unavailable" : qp.status)
+              << " (" << qp.status_value << ")\n";
+    if (qp.solved) {
+        double max_recipe_difference = 0.0;
+        for (std::size_t food = 0; food < diet::kFoodCount; ++food) {
+            max_recipe_difference = std::max(
+                max_recipe_difference, std::abs(qp.recipe_grams[food] - x[food]));
+        }
+        std::cout << "OSQP objective: " << qp.objective << '\n'
+                  << "OSQP iterations: " << qp.iterations << '\n'
+                  << std::scientific << std::setprecision(3)
+                  << "Maximum NLopt/OSQP ingredient difference: "
+                  << max_recipe_difference << " g\n"
+                  << "OSQP primal residual: " << qp.primal_residual << '\n'
+                  << "OSQP dual residual: " << qp.dual_residual << '\n'
+                  << "OSQP duality gap: " << qp.duality_gap << '\n'
+                  << "OSQP relative KKT error: " << qp.relative_kkt_error << '\n';
+        std::cout << std::fixed << std::setprecision(10);
+        std::cout << "\nOSQP constraint dual multipliers (signed; normalized model rows)\n";
+        std::cout << "  " << std::left << std::setw(38) << "Constraint"
+                  << std::right << std::setw(18) << "Dual multiplier" << '\n';
+        for (const auto& dual : qp.duals) {
+            std::cout << "  " << std::left << std::setw(38) << dual.label
+                      << std::right << std::setw(18) << dual.value << '\n';
+        }
+    }
+
     std::cout << std::setprecision(2);
     if (status == nlopt::ROUNDOFF_LIMITED && feasible) {
         std::cout << "The feasible point is retained, but optimality is not confirmed by NLopt.\n";

@@ -44,6 +44,22 @@ audit prints the chosen amount and configured lower and upper bound for every
 ingredient, plus the maximum bound violation. A `ROUNDOFF_LIMITED` feasible
 point is reported, but explicitly marked as not having confirmed optimality.
 
+Each run also solves the same convex quadratic program independently with
+OSQP. Its recipe and objective are compared with NLopt's result. The OSQP audit
+prints its solver status, primal and dual residuals, duality gap, relative KKT
+error, iteration count, and the signed Lagrange multiplier for every nutrient,
+calorie, and ingredient-bound row. Numerical residuals and the NLopt/OSQP
+recipe difference are printed in scientific notation. Nutrient rows are
+normalized by their targets, calorie rows by the salad calorie limit, and
+ingredient variables are in kilograms; dual values therefore correspond to
+those normalized rows. Under OSQP's convention, a negative multiplier
+corresponds to an active lower bound and a positive multiplier to an active
+upper bound.
+Because the objective is strictly convex and all constraints are linear, an
+exact primal-dual KKT point is a global optimum. OSQP reports numerical
+residuals, so these diagnostics provide a numerical optimality check rather
+than an exact symbolic proof. NLopt remains the primary recipe reported below.
+
 ## Feasible recipes from the current data
 
 Independent linear programs against the current table found these minimum-mass
@@ -131,15 +147,21 @@ Sources:
 
 ## Build
 
-Requires a C++20 compiler, CMake 3.20+, pkg-config, and NLopt with its C++
-interface. On Debian or Ubuntu:
+Requires a C++20 compiler, CMake 3.20+, pkg-config, NLopt with its C++
+interface, and OSQP 1.x. On Debian or Ubuntu, install the system packages and
+clone OSQP as in the setup commands below:
 
 ```sh
 make install-dependencies
+mkdir -p ~/src
+git clone https://github.com/osqp/osqp.git ~/src/osqp
+make install-osqp
 make compare
 ```
 
 `make install-dependencies` uses `sudo apt-get` to install system packages.
-`make compare` builds and runs both profiles. Use `make run-sparse` or
+`make install-osqp` installs OSQP under `~/.local` and can be rerun after
+updating the checkout. Override `OSQP_SOURCE` or `OSQP_PREFIX` when using
+different paths. `make compare` builds and runs both profiles. Use `make run-sparse` or
 `make run-diverse` to run one profile. The CMake project discovers
-Ubuntu/Debian's `nlopt_cxx` pkg-config module.
+Ubuntu/Debian's `nlopt_cxx` pkg-config module and the OSQP CMake config package.
