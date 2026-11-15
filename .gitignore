@@ -1,5 +1,8 @@
 /build/
 /cmake-build-*/
+/data/source/*.zip
+/data/reports/*
+!/data/reports/sr_legacy_audit.csv
 *.o
 *.obj
 *.exe

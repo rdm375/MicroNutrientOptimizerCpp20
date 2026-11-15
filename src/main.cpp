@@ -292,7 +292,8 @@ int main(int argc, char** argv) {
     }
     const double salad_calories = diet::total_calories(model, recipe);
     std::cout << "\nSalad: " << salad_weight << " g, " << salad_calories << " kcal\n";
-    std::cout << "Fixed accompaniment: cooked chicken leg meat, " << model.fixed_chicken_grams
+    std::cout << "Fixed accompaniment: roasted chicken leg quarter, meat and skin, "
+              << model.fixed_chicken_grams
               << " g edible portion, " << model.fixed_calories << " kcal\n";
     std::cout << "Whole plate: " << salad_calories + model.fixed_calories << " kcal\n\n";
 

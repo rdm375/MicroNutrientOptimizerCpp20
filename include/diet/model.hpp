@@ -34,7 +34,9 @@ struct OptimizationModel {
     std::array<double, kNutrientCount> fixed_nutrients{};
     std::array<double, kMacronutrientCount> fixed_macronutrients{};
     double fixed_calories = 0.0;
-    double fixed_chicken_grams = 199.0;
+    // USDA SR Legacy edible portion for one roasted leg with skin
+    // (thigh + drumstick + back; bone excluded).
+    double fixed_chicken_grams = 258.0;
     double calorie_limit = 700.0;
 };
 

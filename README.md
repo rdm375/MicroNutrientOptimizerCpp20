@@ -8,9 +8,9 @@ results can be compared under the same nutrient targets and calorie cap.
 
 - Salad ingredients are decision variables in grams, bounded by the table in
   `include/diet/food_data.hpp`.
-- Salad calories are limited to 700 kcal. Chicken is a fixed 199 g cooked
-  edible portion and its calories are reported separately and in the whole
-  plate total.
+- Salad calories are limited to 700 kcal. The fixed accompaniment is one USDA
+  cooked roasted chicken leg portion with skin: 258 g edible (bone excluded).
+  Its calories are reported separately and in the whole plate total.
 - Each configured minimum is enforced on the combined salad and chicken
   nutrients. Vitamin B12 remains a target.
 - Sodium is included in the reported totals but has no minimum constraint and
@@ -60,62 +60,75 @@ exact primal-dual KKT point is a global optimum. OSQP reports numerical
 residuals, so these diagnostics provide a numerical optimality check rather
 than an exact symbolic proof. NLopt remains the primary recipe reported below.
 
-## Feasible recipes from the current data
+## Optimizer results
 
-Independent linear programs against the current table found these minimum-mass
-reference recipes. The C++ optimizer starts from a generic 20 g per-ingredient
-guess (raised to any diverse-profile minimums), so its output can be compared
-with these references instead of being seeded with the answer.
+`make compare` was run after changing the fixed accompaniment to one 258 g
+cooked edible portion of roasted chicken leg with skin. The USDA measure
+includes thigh, drumstick, and back meat with skin; bone is excluded. The run
+used the generic 20 g per-ingredient initial guess, raised to diverse-profile
+minimums where applicable. Those starting recipes were infeasible; both final
+recipes passed the nutrient, calorie, and ingredient-bound checks.
 
-| Ingredient | Sparse | Diverse |
+| Ingredient (g) | Sparse | Diverse |
 |---|---:|---:|
-| Romaine lettuce | — | 30 g |
-| Collard greens | — | 20 g |
-| Spinach | 466 g | 416 g |
-| Roma tomatoes | — | 30 g |
-| Cucumber | — | 20 g |
-| Red onion | — | 10 g |
-| Pine nuts | — | 5 g |
-| Pumpkin seeds | 16 g | 6 g |
-| Chia seeds | — | 5 g |
-| Sunflower seeds | 26 g | 24 g |
-| Shiitake mushrooms | — | 10 g |
-| White button mushrooms | — | 10 g |
-| Broccoli | — | 20 g |
-| Bell pepper | 33 g | 20 g |
-| Egg | 121 g | 122 g |
-| Cheddar | 35 g | 33 g |
-| UV-exposed portabella mushrooms | 42 g | 42 g |
-| Cooked chicken leg meat, served alongside | 199 g | 199 g |
+| Romaine lettuce | 0.00 | 30.00 |
+| Collard greens | 0.00 | 20.00 |
+| Spinach | 431.56 | 382.65 |
+| Roma tomatoes | 0.00 | 30.00 |
+| Cucumbers | 0.00 | 20.00 |
+| Red onion | 0.00 | 10.00 |
+| Pine nuts | 0.00 | 5.00 |
+| Pumpkin seeds | 20.55 | 10.01 |
+| Chia seeds | 2.05 | 5.00 |
+| Sunflower seeds | 24.18 | 22.05 |
+| Shiitake mushrooms | 0.00 | 10.00 |
+| White button mushrooms | 0.00 | 10.00 |
+| Broccoli | 0.00 | 20.00 |
+| Bell pepper | 36.05 | 21.72 |
+| Egg | 98.32 | 98.38 |
+| Cheddar | 40.00 | 39.93 |
+| UV-exposed portabella mushrooms | 43.45 | 43.02 |
+| Roasted chicken leg with skin, edible portion | 258.00 | 258.00 |
 
 | Result | Sparse | Diverse |
 |---|---:|---:|
-| Salad weight | 740 g | 822 g |
+| Salad mass | 696.16 g | 777.75 g |
 | Salad calories | 700 kcal | 700 kcal |
-| Whole plate calories | 1,046 kcal | 1,046 kcal |
-| Sodium, tracked only | 896 mg | 868 mg |
+| Whole plate calories | 1,174.72 kcal | 1,174.72 kcal |
+| Sodium, tracked only | 932.37 mg | 913.50 mg |
 
-Estimated macronutrient profile:
+Whole-plate macronutrients:
 
-| Macro (g) | Sparse salad | Diverse salad | Chicken | Sparse plate | Diverse plate |
-|---|---:|---:|---:|---:|---:|
-| Protein | 49.73 | 47.91 | 48.20 | 97.93 | 96.11 |
-| Fat | 47.19 | 45.28 | 15.52 | 62.71 | 60.80 |
-| Carbohydrate | 29.69 | 36.24 | 0.00 | 29.69 | 36.24 |
-| Fiber | 15.53 | 17.88 | 0.00 | 15.53 | 17.88 |
-| Net carbs | 14.16 | 18.36 | 0.00 | 14.16 | 18.36 |
+| Macro (g) | Sparse | Diverse |
+|---|---:|---:|
+| Protein | 110.42 | 108.72 |
+| Fat | 71.20 | 69.54 |
+| Carbohydrate | 29.28 | 35.13 |
+| Fiber | 15.54 | 17.26 |
+| Net carbs | 13.74 | 17.87 |
 
-Both profiles meet all 19 enforced minimums in the current composition table,
-including 2.4 µg B12 and 15 µg vitamin D. The diverse profile includes every
-original salad ingredient; the sparse profile omits ingredients when the
-optimizer assigns them zero. These recipes depend on UV-treated mushrooms and
-the assumed chicken and egg portions; ordinary button mushrooms do not have
-the modeled vitamin D content.
+Both profiles met all 19 enforced minimums, including 2.4 µg B12 and 15 µg
+vitamin D. Calcium, potassium, B1, B12, C, and D are at their minimum targets.
+The sparse recipe reaches the configured 40 g cheddar upper bound. Vitamin A
+coverage is 291.76% (sparse) and 286.97% (diverse); vitamin K coverage remains
+high at 1,787.42% and 1,706.72%, respectively, largely because both profiles
+use substantial spinach. Nutrient upper limits are not part of this model.
 
-After correcting the plant-food vitamin A conversion, the current sparse and
-diverse profiles provide about 2,787 and 2,739 µg RAE, respectively (about
-310% and 304% of the model's 900 µg RAE target). The large spinach portions
-are the main contributor.
+| Solver diagnostic | Sparse | Diverse |
+|---|---:|---:|
+| NLopt status | Function tolerance reached (3) | Function tolerance reached (3) |
+| Final feasibility | PASS | PASS |
+| OSQP status | Solved (1) | Solved (1) |
+| OSQP objective | 0.6961655055 | 0.7777515304 |
+| Maximum NLopt/OSQP ingredient difference | 5.684e-14 g | 2.665e-13 g |
+| OSQP primal residual | 1.567e-16 | 1.933e-16 |
+| OSQP dual residual | 8.533e-15 | 1.311e-14 |
+| OSQP relative KKT error | 8.533e-15 | 1.311e-14 |
+
+The initial points were infeasible, so the objective increased while the
+optimizer moved to feasible recipes. OSQP independently solved the same convex
+quadratic program; the small residuals and close recipe match provide a strong
+numerical optimality check for this model, not a formal exact-arithmetic proof.
 
 ## Data caveats
 
@@ -124,6 +137,57 @@ audited. In particular, the target array is a simple fixed set and does not
 vary by age, sex, pregnancy, or medical needs. This is an exploratory recipe
 model, not a clinical diet plan.
 
+### USDA FoodData Central audit
+
+The optimizer's hand-entered food table is preserved. `make audit-fooddata`
+downloads the October 2026 full USDA FoodData Central CSV archive and April
+2018 SR Legacy CSV archive, then compares every legacy calorie, macro, and
+micronutrient value against the crosswalked records. It uses downloadable CSVs
+only; no API key or API call is needed. The full archive is about 463 MB
+compressed and contains the food descriptions and nutrient tables missing from
+the small Foundation-only archive. The audit streams the needed tables from the
+ZIP without unpacking the roughly 3.1 GB dataset. The archives are ignored by
+Git. Download scripts validate required table members and record local SHA-256
+checksums beside the archives; SR Legacy is checked against its pinned SHA-256.
+
+The selection policy is **Foundation Foods first, SR Legacy fallback per
+nutrient**. Foundation Foods is based on individual analytical samples and can
+show sample variability; where multiple suitable samples are selected in the
+crosswalk, the audit reports their arithmetic mean, sample count, minimum, and
+maximum. If those samples do not report a nutrient, the audit uses the mapped
+SR Legacy value for that nutrient. If neither source reports it, the result is
+`not_reported`, never zero. Every output row records which source supplied the
+value, FDC IDs, release, derivation/source metadata, and the reason for any
+fallback. The report is written to
+`data/reports/fooddata_priority_audit.csv`. The audit never updates the
+optimizer's data table automatically.
+
+Foundation Foods IDs are deliberately blank in the checked-in crosswalk until
+the matching records have been reviewed. Start with `make foundation-candidates`;
+this downloads the full archive and writes a keyword-generated candidate list
+of Foundation records to `data/reports/foundation_food_candidates.csv`. These
+are suggestions, not asserted matches. Review the food form and description, then fill
+`foundation_fdc_ids`, `foundation_description`, `foundation_identity_match`,
+and `foundation_selection_note` in
+`data/fooddata_central_sr_legacy_crosswalk.csv`. Use semicolon-separated IDs
+when deliberately selecting several samples of the same food description.
+Until a reviewed Foundation mapping is entered, the report will use SR Legacy
+fallback values and say why.
+
+The SR Legacy crosswalk is retained as the fallback and historical comparison.
+Some SR records are approximate identity matches: generic raw tomato for Roma
+tomatoes, generic raw onion for red onion, and sharp sliced cheddar for
+unspecified cheddar. The UV-exposed portabella record is an exact food match,
+but the optimizer's old row reuses white-mushroom values for most nutrients.
+The earlier audit also found a large pine-nut vitamin K discrepancy (0.54 vs
+53.9 µg/100 g) and substantial shiitake differences. These should be reviewed
+at the ingredient/nutrient level before changing optimizer values.
+
+Foundation Foods is updated regularly and SR Legacy is a frozen April 2018
+release. A newer record is not automatically a better match: the food form,
+sample selection, nutrient coverage, and units still need review. The
+crosswalk and release information make each comparison reproducible.
+
 Vitamin A is reported as retinol activity equivalents (RAE). The legacy
 plant-food IU values were previously converted with the retinol factor; they
 now use 0.05 µg RAE per IU for dietary beta-carotene, while the egg and cheddar
@@ -131,16 +195,20 @@ entries retain the retinol-based conversion from the source table. This is a
 source-class approximation; USDA RAE values should replace the legacy IU data
 as the broader food table is audited.
 
-The chicken values are based on USDA SR Legacy chicken leg, meat only, cooked,
-roasted, scaled to 199 g edible portion. A bone-in leg quarter weighs more;
-the portion here is the estimated edible meat amount. The UV mushroom vitamin D
-value is from USDA SR28 portabella mushrooms exposed to ultraviolet light.
+The chicken values use USDA SR Legacy chicken leg, meat and skin, cooked,
+roasted (FDC ID 173617; NDB 05078). The fixed 258 g is USDA's edible-portion
+measure for one leg with skin, including thigh, drumstick, and back; bone is
+excluded. A physical bone-in leg quarter's scale weight will be higher. This is
+the closest USDA serving match to the stated accompaniment, rather than an
+assumption that the 199 g meat-only portion also includes skin. The UV
+mushroom vitamin D value is from USDA SR28 portabella mushrooms exposed to
+ultraviolet light.
 
 Sources:
 
 - [NIH ODS: Vitamin A IU-to-RAE conversion factors](https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/)
 - [USDA SR20: RAE conversion methods for plant and animal foods](https://www.ars.usda.gov/ARSUserFiles/80400525/Data/SR20/SR20_doc.pdf)
-- [USDA SR28: chicken leg, meat only, cooked, roasted](https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg05.pdf)
+- [USDA SR28: chicken leg, meat and skin, cooked, roasted](https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg05.pdf)
 - [USDA SR28: UV-exposed portabella mushrooms](https://www.ars.usda.gov/ARSUserFiles/80400535/Data/SR/SR28/reports/sr28fg11.pdf)
 - [NIH ODS: Vitamin D food sources and adult recommended amounts](https://ods.od.nih.gov/factsheets/VitaminD-Consumer/)
 - [NIH ODS: Vitamin B12 sources, including poultry, eggs, and dairy](https://ods.od.nih.gov/factsheets/VitaminB12-Consumer/)
