@@ -8,6 +8,8 @@
 #include <exception>
 #include <iomanip>
 #include <iostream>
+#include <limits>
+#include <numeric>
 #include <string_view>
 #include <tuple>
 #include <vector>
@@ -20,23 +22,30 @@ struct SolverContext {
     const diet::OptimizationModel& model;
 };
 
-double objective(const std::vector<double>& x, std::vector<double>& gradient, void*) {
+double objective_value(const std::vector<double>& x) {
     // Minimize salad mass. A small, smooth quadratic term gives SLSQP a stable
     // tie-breaker when several ingredient mixes have nearly equal mass.
     double scaled_mass = 0.0;
     double scaled_square_sum = 0.0;
+    for (const double grams : x) {
+        const double scaled = grams / 1000.0;
+        scaled_mass += scaled;
+        scaled_square_sum += scaled * scaled;
+    }
+    return scaled_mass + 1.0e-5 * scaled_square_sum;
+}
+
+double objective(const std::vector<double>& x, std::vector<double>& gradient, void*) {
     if (!gradient.empty()) {
         std::fill(gradient.begin(), gradient.end(), 0.0);
     }
     for (std::size_t food = 0; food < x.size(); ++food) {
         const double scaled = x[food] / 1000.0;
-        scaled_mass += scaled;
-        scaled_square_sum += scaled * scaled;
         if (!gradient.empty()) {
             gradient[food] = 0.001 + 2.0e-5 * scaled / 1000.0;
         }
     }
-    return scaled_mass + 1.0e-5 * scaled_square_sum;
+    return objective_value(x);
 }
 
 void constraints(unsigned, double* result, unsigned variable_count,
@@ -104,6 +113,31 @@ bool converged(nlopt::result status) {
            status == nlopt::FTOL_REACHED || status == nlopt::XTOL_REACHED;
 }
 
+struct BoundCheck {
+    bool valid = true;
+    double maximum_violation_grams = 0.0;
+};
+
+BoundCheck check_bounds(const std::vector<double>& x,
+                        const std::vector<double>& lower,
+                        const std::vector<double>& upper) {
+    constexpr double kBoundToleranceGrams = 1e-7;
+    BoundCheck check;
+    for (std::size_t i = 0; i < x.size(); ++i) {
+        if (!std::isfinite(x[i])) {
+            check.valid = false;
+            check.maximum_violation_grams = std::numeric_limits<double>::infinity();
+            continue;
+        }
+        const double violation = std::max({lower[i] - x[i], x[i] - upper[i], 0.0});
+        check.maximum_violation_grams = std::max(check.maximum_violation_grams, violation);
+        if (violation > kBoundToleranceGrams) {
+            check.valid = false;
+        }
+    }
+    return check;
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -165,6 +199,12 @@ int main(int argc, char** argv) {
                                          : diet::kFoods[i].minimum_grams;
         upper_bounds[i] = diet::kFoods[i].maximum_grams;
     }
+    const double starting_objective = objective_value(x);
+    const double starting_salad_mass = std::accumulate(x.begin(), x.end(), 0.0);
+    const auto starting_bounds = check_bounds(x, lower_bounds, upper_bounds);
+    std::array<double, diet::kFoodCount> starting_recipe{};
+    std::copy(x.begin(), x.end(), starting_recipe.begin());
+    const bool starting_feasible = starting_bounds.valid && meets_targets(model, starting_recipe);
 
     std::vector<double> tolerances(kConstraintCount, 1e-8);
     nlopt::opt optimizer(nlopt::LD_SLSQP, static_cast<unsigned>(diet::kFoodCount));
@@ -190,29 +230,54 @@ int main(int argc, char** argv) {
 
     std::array<double, diet::kFoodCount> recipe{};
     std::copy(x.begin(), x.end(), recipe.begin());
-    bool bounds_valid = true;
-    for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
-        bounds_valid = bounds_valid && std::isfinite(x[i]) &&
-            x[i] >= lower_bounds[i] - 1e-7 && x[i] <= upper_bounds[i] + 1e-7;
-    }
-    const bool feasible = meets_targets(model, recipe) && bounds_valid;
+    const double final_objective = objective_value(x);
+    const double final_salad_mass = std::accumulate(x.begin(), x.end(), 0.0);
+    const double objective_change = final_objective - starting_objective;
+    const double objective_reduction_percent = starting_objective != 0.0
+        ? -100.0 * objective_change / std::abs(starting_objective)
+        : 0.0;
+    const auto final_bounds = check_bounds(x, lower_bounds, upper_bounds);
+    const bool feasible = meets_targets(model, recipe) && final_bounds.valid;
     const bool status_acceptable = converged(status) ||
         (status == nlopt::ROUNDOFF_LIMITED && feasible);
 
-    std::cout << std::fixed << std::setprecision(2);
+    std::cout << std::fixed << std::setprecision(10);
     std::cout << "Recipe profile: " << (diverse_recipe ? "diverse" : "sparse") << '\n';
     std::cout << "Solver status: " << result_name(status) << " (" << status << ")\n";
-    std::cout << "Feasible for all required minimums and bounds: "
-              << (feasible ? "yes" : "no") << '\n';
+    std::cout << "Starting point feasible: " << (starting_feasible ? "yes" : "no") << '\n';
+    std::cout << "Final feasibility (nutrient minimums, calorie cap, ingredient bounds): "
+              << (feasible ? "PASS" : "FAIL") << '\n';
+    std::cout << "Ingredient bounds: " << (final_bounds.valid ? "PASS" : "FAIL")
+              << "; maximum violation = " << final_bounds.maximum_violation_grams
+              << " g (tolerance 0.0000001 g)\n";
     std::cout << "Optimizer convergence: " << (converged(status) ? "yes" : "no") << '\n';
+    std::cout << "Solution classification: "
+              << (feasible && converged(status) ? "feasible and converged"
+                  : feasible ? "feasible; optimality not confirmed"
+                  : converged(status) ? "converged status, but final point is infeasible"
+                                      : "infeasible and not converged") << '\n';
+    std::cout << "Objective (recomputed; scaled mass + tie-breaker): start " << starting_objective
+              << ", final " << final_objective << ", change " << std::showpos
+              << objective_change << std::noshowpos << " (" << std::showpos
+              << objective_reduction_percent << std::noshowpos << "% reduction)\n";
+    std::cout << "Salad mass change: " << starting_salad_mass << " g -> "
+              << final_salad_mass << " g (" << std::showpos
+              << final_salad_mass - starting_salad_mass << std::noshowpos << " g)\n";
+    std::cout << std::setprecision(2);
     if (status == nlopt::ROUNDOFF_LIMITED && feasible) {
         std::cout << "The feasible point is retained, but optimality is not confirmed by NLopt.\n";
     }
-    std::cout << "Salad ingredients\n";
+    std::cout << "\nIngredient bound audit (grams)\n";
+    std::cout << "  " << std::left << std::setw(37) << "Ingredient"
+              << std::right << std::setw(11) << "Chosen"
+              << std::setw(11) << "Minimum"
+              << std::setw(11) << "Maximum" << '\n';
     double salad_weight = 0.0;
     for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
-        if (x[i] < 0.5) continue;
-        std::cout << "  " << diet::kFoods[i].name << ": " << x[i] << " g\n";
+        std::cout << "  " << std::left << std::setw(37) << diet::kFoods[i].name
+                  << std::right << std::setw(11) << x[i]
+                  << std::setw(11) << lower_bounds[i]
+                  << std::setw(11) << upper_bounds[i] << '\n';
         salad_weight += x[i];
     }
     const double salad_calories = diet::total_calories(model, recipe);

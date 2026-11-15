@@ -36,10 +36,13 @@ results can be compared under the same nutrient targets and calorie cap.
   portabella mushrooms remain an additional vitamin D source.
 
 The program minimizes salad mass, with a small smooth term to make the solver's
-choice stable when several mixes have similar mass. A result is accepted only
-if nutrient targets, calorie limit, and ingredient bounds are feasible. A
-`ROUNDOFF_LIMITED` feasible point is reported, but explicitly marked as not
-having confirmed optimality.
+choice stable when several mixes have similar mass. Each run reports the
+objective value at the initial and final recipes, its absolute change and
+percent reduction, final-minus-initial salad mass, and the solver status. It separately
+classifies feasibility and optimizer convergence. The ingredient audit prints
+the chosen amount and configured lower and upper bound for every ingredient,
+plus the maximum bound violation. A `ROUNDOFF_LIMITED` feasible point is
+reported, but explicitly marked as not having confirmed optimality.
 
 ## Feasible recipes from the current data
 
