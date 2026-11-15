@@ -13,8 +13,12 @@ results can be compared under the same nutrient targets and calorie cap.
   Its calories are reported separately and in the whole plate total.
 - Each configured minimum is enforced on the combined salad and chicken
   nutrients. Vitamin B12 remains a target.
-- Sodium is included in the reported totals but has no minimum constraint and
-  does not affect the objective.
+- Sodium is included in the reported totals but has no optimization constraint
+  and does not affect the objective. The report compares the whole-plate total
+  with the adult sodium Adequate Intake (AI, 1,500 mg/day) and Chronic Disease
+  Risk Reduction (CDRR, 2,300 mg/day). These are reference points, not a
+  deficiency test or a sodium upper limit; the National Academies did not set a
+  sodium UL in its 2019 update.
 - Protein, fat, total carbohydrate, fiber, and net carbs are reported for the
   salad, chicken, and whole plate. Net carbs are calculated as total
   carbohydrate minus fiber. These are not optimization constraints.
@@ -40,9 +44,13 @@ choice stable when several mixes have similar mass. Each run reports the
 objective value at the initial and final recipes, its absolute change and
 relative change, final-minus-initial salad mass, and the solver status. It
 separately classifies feasibility and optimizer convergence. The ingredient
-audit prints the chosen amount and configured lower and upper bound for every
-ingredient, plus the maximum bound violation. A `ROUNDOFF_LIMITED` feasible
-point is reported, but explicitly marked as not having confirmed optimality.
+audit prints each ingredient's group, chosen amount, and configured lower and
+upper bound, plus the maximum bound violation. Current groups are leafy greens,
+seeds, nuts, preferred vegetables, mushrooms, and eggs and dairy. An olives
+group is reserved for candidate ingredients; no olive is currently in either
+base recipe. The nutrient report compares sodium with the AI and CDRR reference
+points. A `ROUNDOFF_LIMITED` feasible point is reported, but explicitly marked
+as not having confirmed optimality.
 
 Each run also solves the same convex quadratic program independently with
 OSQP. Its recipe and objective are compared with NLopt's result. The OSQP audit
@@ -95,7 +103,7 @@ recipes passed the nutrient, calorie, and ingredient-bound checks.
 | Salad mass | 696.16 g | 777.75 g |
 | Salad calories | 700 kcal | 700 kcal |
 | Whole plate calories | 1,174.72 kcal | 1,174.72 kcal |
-| Sodium, tracked only | 932.37 mg | 913.50 mg |
+| Sodium (tracked; AI / CDRR) | 932.37 mg (62.2% / 40.5%) | 913.50 mg (60.9% / 39.7%) |
 
 Whole-plate macronutrients:
 
@@ -136,6 +144,11 @@ The original script's nutrient table and units have not been independently
 audited. In particular, the target array is a simple fixed set and does not
 vary by age, sex, pregnancy, or medical needs. This is an exploratory recipe
 model, not a clinical diet plan.
+
+The sodium reference points follow the National Academies' 2019 sodium and
+potassium DRI update: adult sodium AI 1,500 mg/day and adult CDRR
+2,300 mg/day. Sodium has no RDA and no UL under this update. See the
+[National Academies sodium DRI summary](https://nap.nationalacademies.org/resource/25353/030519DRISodiumPotassium.pdf).
 
 ### USDA FoodData Central audit
 

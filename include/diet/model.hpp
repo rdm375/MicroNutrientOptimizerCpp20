@@ -10,6 +10,9 @@ namespace diet {
 
 inline constexpr std::size_t kNutrientCount = 20;
 inline constexpr std::size_t kMacronutrientCount = 4;
+inline constexpr double kSodiumAdequateIntakeMg = 1500.0;
+inline constexpr double kSodiumCdrrMg = 2300.0;
+inline constexpr std::size_t kSodiumNutrientIndex = 8;
 
 struct MacronutrientTotals {
     double protein_g = 0.0;

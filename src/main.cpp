@@ -278,13 +278,16 @@ int main(int argc, char** argv) {
         std::cout << "The feasible point is retained, but optimality is not confirmed by NLopt.\n";
     }
     std::cout << "\nIngredient bound audit (grams)\n";
-    std::cout << "  " << std::left << std::setw(37) << "Ingredient"
+    std::cout << "  " << std::left << std::setw(24) << "Group"
+              << std::setw(37) << "Ingredient"
               << std::right << std::setw(11) << "Chosen"
               << std::setw(11) << "Minimum"
               << std::setw(11) << "Maximum" << '\n';
     double salad_weight = 0.0;
     for (std::size_t i = 0; i < diet::kFoodCount; ++i) {
-        std::cout << "  " << std::left << std::setw(37) << diet::kFoods[i].name
+        std::cout << "  " << std::left << std::setw(24)
+                  << diet::ingredient_group_name(diet::kFoods[i].group)
+                  << std::setw(37) << diet::kFoods[i].name
                   << std::right << std::setw(11) << x[i]
                   << std::setw(11) << lower_bounds[i]
                   << std::setw(11) << upper_bounds[i] << '\n';
@@ -349,6 +352,28 @@ int main(int argc, char** argv) {
         }
         std::cout << '\n';
     }
+
+    const double sodium_mg = diet::total_nutrient(
+        model, recipe, diet::kSodiumNutrientIndex);
+    const double sodium_ai_difference = diet::kSodiumAdequateIntakeMg - sodium_mg;
+    const double sodium_cdrr_difference = diet::kSodiumCdrrMg - sodium_mg;
+    std::cout << "\nSodium reference points (tracked; not optimized)\n"
+              << "  Total, salad + chicken: " << sodium_mg << " mg\n"
+              << "  Adequate Intake (AI): " << diet::kSodiumAdequateIntakeMg
+              << " mg (" << sodium_mg / diet::kSodiumAdequateIntakeMg * 100.0
+              << "%; " << std::abs(sodium_ai_difference) << " mg "
+              << (sodium_ai_difference >= 0.0 ? "below" : "above") << ")\n"
+              << "  Chronic Disease Risk Reduction (CDRR): " << diet::kSodiumCdrrMg
+              << " mg (" << sodium_mg / diet::kSodiumCdrrMg * 100.0
+              << "%; " << std::abs(sodium_cdrr_difference) << " mg "
+              << (sodium_cdrr_difference >= 0.0 ? "below" : "above") << ")\n"
+              << "  Position: "
+              << (sodium_mg < diet::kSodiumAdequateIntakeMg
+                      ? "below the AI reference point"
+                      : (sodium_mg <= diet::kSodiumCdrrMg
+                             ? "between the AI and CDRR reference points"
+                             : "above the CDRR reference point"))
+              << "\n  These are dietary reference points, not a deficiency test or a sodium constraint.\n";
 
     return feasible && status_acceptable ? 0 : 3;
 }
