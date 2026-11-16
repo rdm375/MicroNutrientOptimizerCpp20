@@ -94,11 +94,20 @@ count against the salad calorie cap.
 
 ### OSQP form
 
-OSQP uses the standard form
-$\min_{\mathbf{z}}\frac12\mathbf{z}^{\mathsf T}P\mathbf{z}
-+\mathbf{q}^{\mathsf T}\mathbf{z}$ subject to
-$\mathbf{l}_{\mathrm{QP}}\le A\mathbf{z}\le\mathbf{u}_{\mathrm{QP}}$. Set
-$\mathbf{z}=\mathbf{x}/1000$, measured in kilograms. Here
+OSQP solves the standard form
+
+$$
+\begin{aligned}
+\min_{\mathbf{z}}\quad
+& \frac12\mathbf{z}^{\mathsf T}P\mathbf{z}
++\mathbf{q}^{\mathsf T}\mathbf{z}\\
+\text{subject to}\quad
+& \mathbf{l}_{\mathrm{QP}}\le A\mathbf{z}
+\le\mathbf{u}_{\mathrm{QP}}.
+\end{aligned}
+$$
+
+Set $\mathbf{z}=\mathbf{x}/1000$, measured in kilograms. The objective uses
 $P=2\cdot10^{-5}I_n$ and $\mathbf{q}=\mathbf{1}_n$. The constraints stack as
 
 $$
