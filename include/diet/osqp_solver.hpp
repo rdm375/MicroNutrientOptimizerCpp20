@@ -11,9 +11,10 @@ namespace diet {
 struct QpDual {
     std::string label;
     double value = 0.0;
+    std::string unit;
 };
 
-struct QpAuditResult {
+struct QpResult {
     bool solved = false;
     int status_value = 0;
     std::string status;
@@ -28,10 +29,10 @@ struct QpAuditResult {
     int iterations = 0;
 };
 
-// Solve the same scaled-mass QP with OSQP from the shared NLopt primal start.
-QpAuditResult solve_with_osqp(const OptimizationModel& model,
-                              const std::array<double, kFoodCount>& initial_grams,
-                              const std::array<double, kFoodCount>& lower_grams,
-                              const std::array<double, kFoodCount>& upper_grams);
+// Solve the scaled-mass QP with OSQP, warm-started from the initial recipe.
+QpResult solve_with_osqp(const OptimizationModel& model,
+                         const std::array<double, kFoodCount>& initial_grams,
+                         const std::array<double, kFoodCount>& lower_grams,
+                         const std::array<double, kFoodCount>& upper_grams);
 
 } // namespace diet

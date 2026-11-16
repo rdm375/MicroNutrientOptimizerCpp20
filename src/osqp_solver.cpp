@@ -1,4 +1,4 @@
-#include "diet/osqp_audit.hpp"
+#include "diet/osqp_solver.hpp"
 
 #include <osqp.h>
 
@@ -34,11 +34,11 @@ std::string row_name(std::size_t nutrient) {
 
 } // namespace
 
-QpAuditResult solve_with_osqp(const OptimizationModel& model,
-                              const std::array<double, kFoodCount>& initial_grams,
-                              const std::array<double, kFoodCount>& lower_grams,
-                              const std::array<double, kFoodCount>& upper_grams) {
-    QpAuditResult result;
+QpResult solve_with_osqp(const OptimizationModel& model,
+                         const std::array<double, kFoodCount>& initial_grams,
+                         const std::array<double, kFoodCount>& lower_grams,
+                         const std::array<double, kFoodCount>& upper_grams) {
+    QpResult result;
     constexpr std::size_t n = kFoodCount;
     constexpr std::size_t required_count = [] {
         std::size_t count = 0;
@@ -50,7 +50,7 @@ QpAuditResult solve_with_osqp(const OptimizationModel& model,
     constexpr std::size_t bounds_row_start = calorie_row + 1;
     constexpr std::size_t m = bounds_row_start + n;
 
-    // Variables are kilograms. This is algebraically identical to the NLopt
+    // Variables are kilograms. This is the scaled-mass
     // objective: sum(grams/1000) + 1e-5 * sum((grams/1000)^2).
     std::vector<OSQPFloat> p_values(n, 2.0 * kQuadraticCoefficient);
     std::vector<OSQPInt> p_indices(n);
@@ -176,7 +176,11 @@ QpAuditResult solve_with_osqp(const OptimizationModel& model,
         if (solver->solution->y != nullptr) {
             result.duals.reserve(m);
             for (std::size_t row = 0; row < m; ++row) {
-                result.duals.push_back({row_labels[row], solver->solution->y[row]});
+                const std::string multiplier_unit = row < nutrient_row_count
+                    ? "kg-eq / target fraction"
+                    : row == calorie_row ? "kg-eq / kcal" : "kg-eq / kg";
+                result.duals.push_back(
+                    {row_labels[row], solver->solution->y[row], multiplier_unit});
             }
         }
     } else {

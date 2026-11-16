@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression-check one optimizer CLI profile and its independent OSQP audit."""
+"""Regression-check one optimizer CLI profile and OSQP KKT diagnostics."""
 
 from __future__ import annotations
 
@@ -28,24 +28,28 @@ def main() -> int:
         r"^Final feasibility .*: PASS$",
         r"^Ingredient bounds: PASS",
         r"^OSQP status: solved \(1\)$",
-        r"^Solution classification: feasible(?: and converged|; optimality not confirmed)$",
+        r"^OSQP constraint dual multipliers",
+        r"^Solution classification: feasible and converged$",
     ):
         if not re.search(expected, output, flags=re.MULTILINE):
             raise AssertionError(f"output failed required regression check {expected!r}:\n{output}")
 
     tolerances = (
-        (r"^OSQP primal residual: ([+\-0-9.eE]+)$", 1e-7, "OSQP primal residual"),
-        (r"^OSQP dual residual: ([+\-0-9.eE]+)$", 1e-7, "OSQP dual residual"),
-        (r"^OSQP relative KKT error: ([+\-0-9.eE]+)$", 1e-7, "OSQP relative KKT error"),
-        (r"^Maximum NLopt/OSQP ingredient difference: ([+\-0-9.eE]+) g$", 1e-5,
-         "NLopt/OSQP ingredient difference"),
+        (r"^OSQP primal residual \(row units vary\): ([+\-0-9.eE]+)$", 1e-7,
+         "OSQP primal residual"),
+        (r"^OSQP dual residual \(kg-eq/kg\): ([+\-0-9.eE]+)$", 1e-7,
+         "OSQP dual residual"),
+        (r"^OSQP duality gap \(kg-equivalent\): ([+\-0-9.eE]+)$", 1e-7,
+         "OSQP duality gap"),
+        (r"^OSQP relative KKT error \(dimensionless\): ([+\-0-9.eE]+)$", 1e-7,
+         "OSQP relative KKT error"),
     )
     for pattern, limit, label in tolerances:
-        actual = value(pattern, output, label)
+        actual = abs(value(pattern, output, label))
         if actual > limit:
             raise AssertionError(f"{label}={actual:g} exceeds regression tolerance {limit:g}")
 
-    print(f"PASS: {sys.argv[2]} feasible; OSQP KKT and NLopt agreement are within tolerance")
+    print(f"PASS: {sys.argv[2]} feasible; OSQP KKT residuals are within tolerance")
     return 0
 
 

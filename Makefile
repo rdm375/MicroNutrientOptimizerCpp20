@@ -5,7 +5,7 @@ PYTHON ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 # Debian and Ubuntu package setup. This target requires sudo privileges.
 install-dependencies:
 	sudo apt-get update
-	sudo apt-get install -y build-essential cmake pkg-config python3 python3-venv git libnlopt-cxx-dev
+	sudo apt-get install -y build-essential cmake python3 python3-venv git
 
 install-python-dependencies:
 	python3 -m venv .venv

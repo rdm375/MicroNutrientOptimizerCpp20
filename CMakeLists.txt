@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.20)
 project(DietOptimizerCpp20 VERSION 0.1.0 LANGUAGES CXX)
 
 include(CTest)
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(NLOPT REQUIRED IMPORTED_TARGET nlopt_cxx=2.7.1)
 # OSQP v1.0.0's installed config currently advertises package version 0.0.0.
 # The Makefile and CI pin the source tag; CMake's package version check would
 # reject that correctly built installation.
@@ -12,11 +10,11 @@ find_package(osqp CONFIG REQUIRED)
 add_executable(diet_optimizer
     src/main.cpp
     src/model.cpp
-    src/osqp_audit.cpp
+    src/osqp_solver.cpp
 )
 target_compile_features(diet_optimizer PRIVATE cxx_std_20)
 target_include_directories(diet_optimizer PRIVATE include)
-target_link_libraries(diet_optimizer PRIVATE PkgConfig::NLOPT osqp::osqp)
+target_link_libraries(diet_optimizer PRIVATE osqp::osqp)
 
 if(MSVC)
     target_compile_options(diet_optimizer PRIVATE /W4 /permissive-)
