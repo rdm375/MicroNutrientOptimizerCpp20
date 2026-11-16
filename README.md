@@ -6,11 +6,9 @@ one and reports the full plate with a fixed roasted chicken accompaniment.
 
 ## Why I built it
 
-I began this project in June 2020. I wanted a practical way to design a
-Mediterranean-style ketogenic eating pattern that met required micronutrient
-targets while using foods I enjoyed.
+I originally did this work back in June 2020. The pandemic was just getting started and my wife and I were planting a garden. I was curious if there was a way to portion out salad ingredients, consistent a Mediterranean-style ketogenic diet, that met basic RDI vitamin requirements using basic foods and not relying on multivitamins.
 
-This C++20 version improves that experiment with explicit portion bounds,
+This version improves that experiment with explicit portion bounds,
 food-composition data, macro and net-carb reporting, and an independent
 quadratic-program audit. The current program models one salad plus a fixed
 chicken leg quarter. It reports net carbs, but it does not impose a ketogenic
