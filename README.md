@@ -47,45 +47,85 @@ carbohydrate minus fiber. Macros and sodium are reported but not optimized.
 
 ## Mathematical model
 
-Let \(x_i\) be grams of salad ingredient \(i\); \(a_{ji}\) its amount of
-nutrient \(j\) per gram; and \(e_i\) its calories per gram. Let \(c_j\) be
-the fixed chicken's amount of nutrient \(j\), \(r_j\) the configured nutrient
-minimum, and \(K=700\) kcal the salad limit.
+Let $n=17$ be the number of salad ingredients and $m=19$ the number of
+constrained nutrients. The decision vector $\mathbf{x}\in\mathbb{R}^{n}$
+contains ingredient portions in grams.
 
-The objective is salad mass plus a small quadratic tie-breaker:
+Let $N\in\mathbb{R}^{m\times n}$ contain nutrient amounts per gram, where
+$N_{ji}$ is the amount of nutrient $j$ in one gram of ingredient $i$. Let
+$\mathbf{c}\in\mathbb{R}^{m}$ be the fixed chicken's nutrient contributions,
+$\mathbf{r}\in\mathbb{R}^{m}$ the configured nutrient minimums, and
+$\mathbf{e}\in\mathbb{R}^{n}$ the calories per gram for each ingredient. For
+profile $p$, $\boldsymbol{\ell}^{(p)}$ and $\mathbf{u}$ give the lower and
+upper portion bounds.
+
+The objective minimizes salad mass, with a small quadratic tie-breaker.
+Dividing portions by 1,000 expresses the mass terms in kilograms:
 
 $$
-\min_x\quad \sum_i \frac{x_i}{1000}
-+10^{-5}\sum_i\left(\frac{x_i}{1000}\right)^2
+\min_{\mathbf{x}}\quad
+\mathbf{1}^{\mathsf T}\left(\frac{\mathbf{x}}{1000}\right)
++10^{-5}\left\|\frac{\mathbf{x}}{1000}\right\|_2^2
 $$
 
 subject to nutrient minimums
 
 $$
-c_j+\sum_i a_{ji}x_i\ge r_j
-\quad (j\text{ in the 19 constrained nutrients}),
+N\mathbf{x}+\mathbf{c}\succeq\mathbf{r},
 $$
 
 the salad calorie cap
 
 $$
-\sum_i e_i x_i\le K,
+\mathbf{e}^{\mathsf T}\mathbf{x}\le 700,
 $$
 
 and profile-specific portion bounds
 
 $$
-\ell_i\le x_i\le u_i.
+\boldsymbol{\ell}^{(p)}\le\mathbf{x}\le\mathbf{u}.
 $$
 
-The sparse profile generally permits zero portions; the diverse profile raises
-the lower bounds. Sodium is tracked but is not a constrained nutrient.
+The vector inequality $\succeq$ is componentwise. The sparse profile generally
+permits zero portions; the diverse profile raises the lower bounds. Sodium is
+tracked but is not one of the constrained nutrients. Chicken contributes to
+nutrient totals but is fixed, so it is not a decision variable and does not
+count against the salad calorie cap.
 
-The objective is strictly convex and the constraints are linear, so this is a
-convex quadratic program with a unique global minimizer. In exact arithmetic,
-a point satisfying the KKT conditions is globally optimal. The solvers operate
-in floating point, so the reported residuals are numerical checks, not a
-symbolic proof.
+### OSQP form
+
+OSQP uses the standard form
+$\min_{\mathbf{z}}\frac12\mathbf{z}^{\mathsf T}P\mathbf{z}
++\mathbf{q}^{\mathsf T}\mathbf{z}$ subject to
+$\mathbf{l}_{\mathrm{QP}}\le A\mathbf{z}\le\mathbf{u}_{\mathrm{QP}}$. Set
+$\mathbf{z}=\mathbf{x}/1000$, measured in kilograms. Here
+$P=2\cdot10^{-5}I_n$ and $\mathbf{q}=\mathbf{1}_n$. The constraints stack as
+
+$$
+A=
+\begin{bmatrix}
+1000N\\
+1000\mathbf{e}^{\mathsf T}\\
+I_n
+\end{bmatrix},\qquad
+\mathbf{l}_{\mathrm{QP}}=
+\begin{bmatrix}
+\mathbf{r}-\mathbf{c}\\
+-\infty\\
+\boldsymbol{\ell}^{(p)}/1000
+\end{bmatrix},\qquad
+\mathbf{u}_{\mathrm{QP}}=
+\begin{bmatrix}
++\infty\\
+700\\
+\mathbf{u}/1000
+\end{bmatrix}.
+$$
+
+The objective is strictly convex and the constraints are linear, so the model
+has a unique global minimizer. In exact arithmetic, a point satisfying the
+KKT conditions is globally optimal. The solvers operate in floating point, so
+their residuals are numerical checks rather than a symbolic proof.
 
 ## Why two solvers?
 
