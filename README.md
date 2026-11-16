@@ -184,12 +184,36 @@ Whole-plate macronutrients:
 | Fiber | 21.59 | 19.36 |
 | Net carbs | 13.54 | 17.84 |
 
-Both profiles met all 19 enforced minimums, including 2.4 µg B12 and 15 µg
-vitamin D. Calcium, potassium, B1, B12, and D are at their minimum targets.
-Vitamin A coverage is 233.57% (sparse) and 227.97% (diverse). Vitamin K
-coverage is 1,607.13% and 1,633.08%, respectively, largely because both
-profiles use substantial leafy greens. Nutrient upper limits are not part of
-this model.
+Both profiles met all 19 enforced minimums. The table reports the resulting
+whole-plate micronutrient totals and coverage. Sodium is tracked but is not an
+optimization target.
+
+| Nutrient | Target | Sparse total | Sparse coverage | Diverse total | Diverse coverage |
+|---|---:|---:|---:|---:|---:|
+| Calcium | 1,000 mg | 1,000.00 mg | 100.00% | 1,000.00 mg | 100.00% |
+| Copper | 0.90 mg | 1.53 mg | 169.94% | 1.54 mg | 170.63% |
+| Iron | 8.00 mg | 17.95 mg | 224.32% | 15.55 mg | 194.35% |
+| Magnesium | 350 mg | 560.56 mg | 160.16% | 504.48 mg | 144.14% |
+| Manganese | 2.30 mg | 4.87 mg | 211.90% | 4.98 mg | 216.68% |
+| Phosphorus | 700 mg | 1,533.74 mg | 219.11% | 1,466.70 mg | 209.53% |
+| Potassium | 3,400 mg | 3,400.00 mg | 100.00% | 3,400.00 mg | 100.00% |
+| Selenium | 55 µg | 142.53 µg | 259.15% | 135.73 µg | 246.78% |
+| Sodium (tracked) | — | 925.50 mg | — | 833.60 mg | — |
+| Zinc | 11.00 mg | 12.40 mg | 112.72% | 12.24 mg | 111.25% |
+| Vitamin B1 | 1.20 mg | 1.20 mg | 100.00% | 1.20 mg | 100.00% |
+| Vitamin B2 | 1.30 mg | 2.06 mg | 158.54% | 2.13 mg | 163.97% |
+| Vitamin B3 | 16.00 mg | 25.13 mg | 157.07% | 25.34 mg | 158.36% |
+| Vitamin B6 | 1.30 mg | 2.40 mg | 184.67% | 2.63 mg | 202.59% |
+| Vitamin B12 | 2.40 µg | 2.40 µg | 100.00% | 2.40 µg | 100.00% |
+| Vitamin A | 900 µg RAE | 2,102.11 µg RAE | 233.57% | 2,051.70 µg RAE | 227.97% |
+| Vitamin C | 90 mg | 115.61 mg | 128.46% | 174.70 mg | 194.11% |
+| Vitamin D | 15 µg | 15.00 µg | 100.00% | 15.00 µg | 100.00% |
+| Vitamin E | 15 mg | 19.31 mg | 128.72% | 22.03 mg | 146.84% |
+| Vitamin K | 120 µg | 1,928.56 µg | 1,607.13% | 1,959.70 µg | 1,633.08% |
+
+Sodium is 61.70% of the AI and 40.24% of the CDRR for the sparse plate; for the
+diverse plate it is 55.57% of the AI and 36.24% of the CDRR. Nutrient upper
+limits are not part of this model.
 
 | Solver diagnostic | Sparse | Diverse |
 |---|---:|---:|
