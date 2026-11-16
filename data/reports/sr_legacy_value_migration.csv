@@ -1,0 +1,451 @@
+ingredient_key,nutrient,unit,identity_match,fdc_id,fdc_description,fdc_value_per_100g,fdc_value_class,fdc_data_points,legacy_portion_g,legacy_value_at_portion_before,legacy_value_at_portion_after,legacy_source_unit,unit_conversion_factor,migration_action
+romaine lettuce,Energy,kcal,exact,169247,"Lettuce, cos or romaine, raw",17,calculated or imputed,0,94,15.98,15.98,kcal,1,apply exact SR Legacy fallback
+romaine lettuce,Protein,g,exact,169247,"Lettuce, cos or romaine, raw",1.23,source metadata not specified,12,94,1.16,1.1562,g,1,apply exact SR Legacy fallback
+romaine lettuce,Total lipid (fat),g,exact,169247,"Lettuce, cos or romaine, raw",0.3,source metadata not specified,10,94,0.28,0.282,g,1,apply exact SR Legacy fallback
+romaine lettuce,"Carbohydrate, by difference",g,exact,169247,"Lettuce, cos or romaine, raw",3.29,calculated or imputed,0,94,3.09,3.0926,g,1,apply exact SR Legacy fallback
+romaine lettuce,"Fiber, total dietary",g,exact,169247,"Lettuce, cos or romaine, raw",2.1,source metadata not specified,11,94,1.97,1.974,g,1,apply exact SR Legacy fallback
+romaine lettuce,"Calcium, Ca",mg,exact,169247,"Lettuce, cos or romaine, raw",33,source metadata not specified,11,94,31.02,31.02,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Copper, Cu",mg,exact,169247,"Lettuce, cos or romaine, raw",0.048,source metadata not specified,9,94,0.05,0.04512,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Iron, Fe",mg,exact,169247,"Lettuce, cos or romaine, raw",0.97,source metadata not specified,11,94,0.91,0.9118,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Magnesium, Mg",mg,exact,169247,"Lettuce, cos or romaine, raw",14,source metadata not specified,11,94,13.16,13.16,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Manganese, Mn",mg,exact,169247,"Lettuce, cos or romaine, raw",0.155,source metadata not specified,11,94,0.15,0.1457,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Phosphorus, P",mg,exact,169247,"Lettuce, cos or romaine, raw",30,source metadata not specified,11,94,28.2,28.2,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Potassium, K",mg,exact,169247,"Lettuce, cos or romaine, raw",247,source metadata not specified,11,94,232.18,232.18,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Selenium, Se",µg,exact,169247,"Lettuce, cos or romaine, raw",0.4,analytical or derived from analytical,7,94,0.00038,0.000376,mg,1000,apply exact SR Legacy fallback
+romaine lettuce,"Sodium, Na",mg,exact,169247,"Lettuce, cos or romaine, raw",8,source metadata not specified,4,94,7.52,7.52,mg,1,apply exact SR Legacy fallback
+romaine lettuce,"Zinc, Zn",mg,exact,169247,"Lettuce, cos or romaine, raw",0.23,source metadata not specified,11,94,0.22,0.2162,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Thiamin,mg,exact,169247,"Lettuce, cos or romaine, raw",0.072,source metadata not specified,11,94,0.07,0.06768,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Riboflavin,mg,exact,169247,"Lettuce, cos or romaine, raw",0.067,source metadata not specified,12,94,0.06,0.06298,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Niacin,mg,exact,169247,"Lettuce, cos or romaine, raw",0.313,source metadata not specified,12,94,0.45,0.29422,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Vitamin B-6,mg,exact,169247,"Lettuce, cos or romaine, raw",0.074,source metadata not specified,12,94,0.07,0.06956,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Vitamin B-12,µg,exact,169247,"Lettuce, cos or romaine, raw",0,source metadata not specified,0,94,0,0,mg,1000,apply exact SR Legacy fallback
+romaine lettuce,"Vitamin A, RAE",µg RAE,exact,169247,"Lettuce, cos or romaine, raw",436,source metadata not specified,0,94,0.40937,0.40984,mg,1000,apply exact SR Legacy fallback
+romaine lettuce,"Vitamin C, total ascorbic acid",mg,exact,169247,"Lettuce, cos or romaine, raw",4,source metadata not specified,12,94,3.76,3.76,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Vitamin D (D2 + D3),µg,exact,169247,"Lettuce, cos or romaine, raw",0,source metadata not specified,0,94,0,0,mg,1000,apply exact SR Legacy fallback
+romaine lettuce,Vitamin E (alpha-tocopherol),mg,exact,169247,"Lettuce, cos or romaine, raw",0.13,analytical or derived from analytical,5,94,0.12,0.1222,mg,1,apply exact SR Legacy fallback
+romaine lettuce,Vitamin K (phylloquinone),µg,exact,169247,"Lettuce, cos or romaine, raw",102.5,analytical or derived from analytical,8,94,0.09635,0.09635,mg,1000,apply exact SR Legacy fallback
+collard greens,Energy,kcal,exact,170406,"Collards, raw",32,calculated or imputed,0,190,63,60.8,kcal,1,apply exact SR Legacy fallback
+collard greens,Protein,g,exact,170406,"Collards, raw",3.02,analytical or derived from analytical,7,190,5.15,5.738,g,1,apply exact SR Legacy fallback
+collard greens,Total lipid (fat),g,exact,170406,"Collards, raw",0.61,analytical or derived from analytical,7,190,1.37,1.159,g,1,apply exact SR Legacy fallback
+collard greens,"Carbohydrate, by difference",g,exact,170406,"Collards, raw",5.42,calculated or imputed,0,190,10.73,10.298,g,1,apply exact SR Legacy fallback
+collard greens,"Fiber, total dietary",g,exact,170406,"Collards, raw",4,source metadata not specified,9,190,7.6,7.6,g,1,apply exact SR Legacy fallback
+collard greens,"Calcium, Ca",mg,exact,170406,"Collards, raw",232,analytical or derived from analytical,6,190,267.9,440.8,mg,1,apply exact SR Legacy fallback
+collard greens,"Copper, Cu",mg,exact,170406,"Collards, raw",0.046,source metadata not specified,15,190,0.1,0.0874,mg,1,apply exact SR Legacy fallback
+collard greens,"Iron, Fe",mg,exact,170406,"Collards, raw",0.47,source metadata not specified,14,190,2.15,0.893,mg,1,apply exact SR Legacy fallback
+collard greens,"Magnesium, Mg",mg,exact,170406,"Collards, raw",27,source metadata not specified,14,190,39.9,51.3,mg,1,apply exact SR Legacy fallback
+collard greens,"Manganese, Mn",mg,exact,170406,"Collards, raw",0.658,source metadata not specified,14,190,0.97,1.2502,mg,1,apply exact SR Legacy fallback
+collard greens,"Phosphorus, P",mg,exact,170406,"Collards, raw",25,source metadata not specified,14,190,60.8,47.5,mg,1,apply exact SR Legacy fallback
+collard greens,"Potassium, K",mg,exact,170406,"Collards, raw",213,source metadata not specified,20,190,222.3,404.7,mg,1,apply exact SR Legacy fallback
+collard greens,"Selenium, Se",µg,exact,170406,"Collards, raw",1.3,calculated or imputed,0,190,0.00095,0.00247,mg,1000,apply exact SR Legacy fallback
+collard greens,"Sodium, Na",mg,exact,170406,"Collards, raw",17,source metadata not specified,20,190,28.5,32.3,mg,1,apply exact SR Legacy fallback
+collard greens,"Zinc, Zn",mg,exact,170406,"Collards, raw",0.21,source metadata not specified,15,190,0.44,0.399,mg,1,apply exact SR Legacy fallback
+collard greens,Thiamin,mg,exact,170406,"Collards, raw",0.054,analytical or derived from analytical,3,190,0.08,0.1026,mg,1,apply exact SR Legacy fallback
+collard greens,Riboflavin,mg,exact,170406,"Collards, raw",0.13,analytical or derived from analytical,3,190,0.2,0.247,mg,1,apply exact SR Legacy fallback
+collard greens,Niacin,mg,exact,170406,"Collards, raw",0.742,analytical or derived from analytical,3,190,1.09,1.4098,mg,1,apply exact SR Legacy fallback
+collard greens,Vitamin B-6,mg,exact,170406,"Collards, raw",0.165,analytical or derived from analytical,3,190,0.24,0.3135,mg,1,apply exact SR Legacy fallback
+collard greens,Vitamin B-12,µg,exact,170406,"Collards, raw",0,source metadata not specified,0,190,0,0,mg,1000,apply exact SR Legacy fallback
+collard greens,"Vitamin A, RAE",µg RAE,exact,170406,"Collards, raw",251,source metadata not specified,0,190,0.722,0.4769,mg,1000,apply exact SR Legacy fallback
+collard greens,"Vitamin C, total ascorbic acid",mg,exact,170406,"Collards, raw",35.3,analytical or derived from analytical,3,190,34.58,67.07,mg,1,apply exact SR Legacy fallback
+collard greens,Vitamin D (D2 + D3),µg,exact,170406,"Collards, raw",0,source metadata not specified,0,190,0,0,mg,1000,apply exact SR Legacy fallback
+collard greens,Vitamin E (alpha-tocopherol),mg,exact,170406,"Collards, raw",2.26,calculated or imputed,0,190,1.67,4.294,mg,1,apply exact SR Legacy fallback
+collard greens,Vitamin K (phylloquinone),µg,exact,170406,"Collards, raw",437.1,analytical or derived from analytical,2,190,0.77254,0.83049,mg,1000,apply exact SR Legacy fallback
+spinach,Energy,kcal,exact,168462,"Spinach, raw",23,calculated or imputed,0,180,41.4,41.4,kcal,1,apply exact SR Legacy fallback
+spinach,Protein,g,exact,168462,"Spinach, raw",2.86,source metadata not specified,9,180,5.35,5.148,g,1,apply exact SR Legacy fallback
+spinach,Total lipid (fat),g,exact,168462,"Spinach, raw",0.39,source metadata not specified,7,180,0.47,0.702,g,1,apply exact SR Legacy fallback
+spinach,"Carbohydrate, by difference",g,exact,168462,"Spinach, raw",3.63,calculated or imputed,0,180,6.75,6.534,g,1,apply exact SR Legacy fallback
+spinach,"Fiber, total dietary",g,exact,168462,"Spinach, raw",2.2,source metadata not specified,1,180,4.32,3.96,g,1,apply exact SR Legacy fallback
+spinach,"Calcium, Ca",mg,exact,168462,"Spinach, raw",99,source metadata not specified,9,180,244.8,178.2,mg,1,apply exact SR Legacy fallback
+spinach,"Copper, Cu",mg,exact,168462,"Spinach, raw",0.13,source metadata not specified,7,180,0.31,0.234,mg,1,apply exact SR Legacy fallback
+spinach,"Iron, Fe",mg,exact,168462,"Spinach, raw",2.71,source metadata not specified,10,180,6.43,4.878,mg,1,apply exact SR Legacy fallback
+spinach,"Magnesium, Mg",mg,exact,168462,"Spinach, raw",79,source metadata not specified,7,180,156.5,142.2,mg,1,apply exact SR Legacy fallback
+spinach,"Manganese, Mn",mg,exact,168462,"Spinach, raw",0.897,source metadata not specified,6,180,1.68,1.6146,mg,1,apply exact SR Legacy fallback
+spinach,"Phosphorus, P",mg,exact,168462,"Spinach, raw",49,source metadata not specified,7,180,100.8,88.2,mg,1,apply exact SR Legacy fallback
+spinach,"Potassium, K",mg,exact,168462,"Spinach, raw",558,source metadata not specified,10,180,838.8,1004.4,mg,1,apply exact SR Legacy fallback
+spinach,"Selenium, Se",µg,exact,168462,"Spinach, raw",1,analytical or derived from analytical,5,180,0.0027,0.0018,mg,1000,apply exact SR Legacy fallback
+spinach,"Sodium, Na",mg,exact,168462,"Spinach, raw",79,source metadata not specified,10,180,126,142.2,mg,1,apply exact SR Legacy fallback
+spinach,"Zinc, Zn",mg,exact,168462,"Spinach, raw",0.53,source metadata not specified,7,180,1.37,0.954,mg,1,apply exact SR Legacy fallback
+spinach,Thiamin,mg,exact,168462,"Spinach, raw",0.078,source metadata not specified,9,180,0.17,0.1404,mg,1,apply exact SR Legacy fallback
+spinach,Riboflavin,mg,exact,168462,"Spinach, raw",0.189,source metadata not specified,9,180,0.42,0.3402,mg,1,apply exact SR Legacy fallback
+spinach,Niacin,mg,exact,168462,"Spinach, raw",0.724,source metadata not specified,9,180,0.88,1.3032,mg,1,apply exact SR Legacy fallback
+spinach,Vitamin B-6,mg,exact,168462,"Spinach, raw",0.195,source metadata not specified,6,180,0.44,0.351,mg,1,apply exact SR Legacy fallback
+spinach,Vitamin B-12,µg,exact,168462,"Spinach, raw",0,source metadata not specified,0,180,0,0,mg,1000,apply exact SR Legacy fallback
+spinach,"Vitamin A, RAE",µg RAE,exact,168462,"Spinach, raw",469,source metadata not specified,0,180,0.94329,0.8442,mg,1000,apply exact SR Legacy fallback
+spinach,"Vitamin C, total ascorbic acid",mg,exact,168462,"Spinach, raw",28.1,source metadata not specified,7,180,17.64,50.58,mg,1,apply exact SR Legacy fallback
+spinach,Vitamin D (D2 + D3),µg,exact,168462,"Spinach, raw",0,source metadata not specified,0,180,0,0,mg,1000,apply exact SR Legacy fallback
+spinach,Vitamin E (alpha-tocopherol),mg,exact,168462,"Spinach, raw",2.03,source metadata not specified,7,180,3.74,3.654,mg,1,apply exact SR Legacy fallback
+spinach,Vitamin K (phylloquinone),µg,exact,168462,"Spinach, raw",482.9,source metadata not specified,1,180,0.88848,0.86922,mg,1000,apply exact SR Legacy fallback
+roma tomatoes,Energy,kcal,approximate,170457,"Tomatoes, red, ripe, raw, year round average",18,calculated or imputed,0,180,32.4,32.4,kcal,1,retain: approximate food identity
+roma tomatoes,Protein,g,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.88,source metadata not specified,19,180,1.58,1.58,g,1,retain: approximate food identity
+roma tomatoes,Total lipid (fat),g,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.2,source metadata not specified,26,180,0.36,0.36,g,1,retain: approximate food identity
+roma tomatoes,"Carbohydrate, by difference",g,approximate,170457,"Tomatoes, red, ripe, raw, year round average",3.89,calculated or imputed,0,180,7,7,g,1,retain: approximate food identity
+roma tomatoes,"Fiber, total dietary",g,approximate,170457,"Tomatoes, red, ripe, raw, year round average",1.2,source metadata not specified,5,180,2.16,2.16,g,1,retain: approximate food identity
+roma tomatoes,"Calcium, Ca",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",10,source metadata not specified,69,180,18,18,mg,1,retain: approximate food identity
+roma tomatoes,"Copper, Cu",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.059,source metadata not specified,70,180,0.11,0.11,mg,1,retain: approximate food identity
+roma tomatoes,"Iron, Fe",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.27,source metadata not specified,70,180,0.49,0.49,mg,1,retain: approximate food identity
+roma tomatoes,"Magnesium, Mg",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",11,source metadata not specified,70,180,19.8,19.8,mg,1,retain: approximate food identity
+roma tomatoes,"Manganese, Mn",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.114,source metadata not specified,70,180,0.21,0.21,mg,1,retain: approximate food identity
+roma tomatoes,"Phosphorus, P",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",24,source metadata not specified,69,180,43.2,43.2,mg,1,retain: approximate food identity
+roma tomatoes,"Potassium, K",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",237,source metadata not specified,67,180,426.6,426.6,mg,1,retain: approximate food identity
+roma tomatoes,"Selenium, Se",µg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0,source metadata not specified,36,180,0,0,mg,1000,retain: approximate food identity
+roma tomatoes,"Sodium, Na",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",5,source metadata not specified,66,180,9,9,mg,1,retain: approximate food identity
+roma tomatoes,"Zinc, Zn",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.17,source metadata not specified,70,180,0.31,0.31,mg,1,retain: approximate food identity
+roma tomatoes,Thiamin,mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.037,source metadata not specified,19,180,0.07,0.07,mg,1,retain: approximate food identity
+roma tomatoes,Riboflavin,mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.019,source metadata not specified,19,180,0.03,0.03,mg,1,retain: approximate food identity
+roma tomatoes,Niacin,mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.594,source metadata not specified,19,180,1.07,1.07,mg,1,retain: approximate food identity
+roma tomatoes,Vitamin B-6,mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.08,source metadata not specified,19,180,0.14,0.14,mg,1,retain: approximate food identity
+roma tomatoes,Vitamin B-12,µg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0,source metadata not specified,0,180,0,0,mg,1000,retain: approximate food identity
+roma tomatoes,"Vitamin A, RAE",µg RAE,approximate,170457,"Tomatoes, red, ripe, raw, year round average",42,source metadata not specified,0,180,0.07497,0.07497,mg,1000,retain: approximate food identity
+roma tomatoes,"Vitamin C, total ascorbic acid",mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",13.7,source metadata not specified,25,180,24.66,24.66,mg,1,retain: approximate food identity
+roma tomatoes,Vitamin D (D2 + D3),µg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0,source metadata not specified,0,180,0,0,mg,1000,retain: approximate food identity
+roma tomatoes,Vitamin E (alpha-tocopherol),mg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",0.54,source metadata not specified,16,180,0.97,0.97,mg,1,retain: approximate food identity
+roma tomatoes,Vitamin K (phylloquinone),µg,approximate,170457,"Tomatoes, red, ripe, raw, year round average",7.9,source metadata not specified,15,180,0.01422,0.01422,mg,1000,retain: approximate food identity
+cucumbers,Energy,kcal,exact,168409,"Cucumber, with peel, raw",15,calculated or imputed,0,104,15.6,15.6,kcal,1,apply exact SR Legacy fallback
+cucumbers,Protein,g,exact,168409,"Cucumber, with peel, raw",0.65,analytical or derived from analytical,4,104,0.68,0.676,g,1,apply exact SR Legacy fallback
+cucumbers,Total lipid (fat),g,exact,168409,"Cucumber, with peel, raw",0.11,source metadata not specified,9,104,0.11,0.1144,g,1,apply exact SR Legacy fallback
+cucumbers,"Carbohydrate, by difference",g,exact,168409,"Cucumber, with peel, raw",3.63,calculated or imputed,0,104,3.78,3.7752,g,1,apply exact SR Legacy fallback
+cucumbers,"Fiber, total dietary",g,exact,168409,"Cucumber, with peel, raw",0.5,source metadata not specified,1,104,0.52,0.52,g,1,apply exact SR Legacy fallback
+cucumbers,"Calcium, Ca",mg,exact,168409,"Cucumber, with peel, raw",16,analytical or derived from analytical,4,104,16.64,16.64,mg,1,apply exact SR Legacy fallback
+cucumbers,"Copper, Cu",mg,exact,168409,"Cucumber, with peel, raw",0.041,analytical or derived from analytical,8,104,0.04,0.04264,mg,1,apply exact SR Legacy fallback
+cucumbers,"Iron, Fe",mg,exact,168409,"Cucumber, with peel, raw",0.28,analytical or derived from analytical,4,104,0.29,0.2912,mg,1,apply exact SR Legacy fallback
+cucumbers,"Magnesium, Mg",mg,exact,168409,"Cucumber, with peel, raw",13,analytical or derived from analytical,4,104,13.52,13.52,mg,1,apply exact SR Legacy fallback
+cucumbers,"Manganese, Mn",mg,exact,168409,"Cucumber, with peel, raw",0.079,analytical or derived from analytical,4,104,0.08,0.08216,mg,1,apply exact SR Legacy fallback
+cucumbers,"Phosphorus, P",mg,exact,168409,"Cucumber, with peel, raw",24,analytical or derived from analytical,4,104,24.96,24.96,mg,1,apply exact SR Legacy fallback
+cucumbers,"Potassium, K",mg,exact,168409,"Cucumber, with peel, raw",147,analytical or derived from analytical,4,104,152.88,152.88,mg,1,apply exact SR Legacy fallback
+cucumbers,"Selenium, Se",µg,exact,168409,"Cucumber, with peel, raw",0.3,analytical or derived from analytical,2,104,0.00031,0.000312,mg,1000,apply exact SR Legacy fallback
+cucumbers,"Sodium, Na",mg,exact,168409,"Cucumber, with peel, raw",2,source metadata not specified,54,104,2.08,2.08,mg,1,apply exact SR Legacy fallback
+cucumbers,"Zinc, Zn",mg,exact,168409,"Cucumber, with peel, raw",0.2,analytical or derived from analytical,4,104,0.21,0.208,mg,1,apply exact SR Legacy fallback
+cucumbers,Thiamin,mg,exact,168409,"Cucumber, with peel, raw",0.027,analytical or derived from analytical,4,104,0.03,0.02808,mg,1,apply exact SR Legacy fallback
+cucumbers,Riboflavin,mg,exact,168409,"Cucumber, with peel, raw",0.033,analytical or derived from analytical,4,104,0.03,0.03432,mg,1,apply exact SR Legacy fallback
+cucumbers,Niacin,mg,exact,168409,"Cucumber, with peel, raw",0.098,analytical or derived from analytical,8,104,0.1,0.10192,mg,1,apply exact SR Legacy fallback
+cucumbers,Vitamin B-6,mg,exact,168409,"Cucumber, with peel, raw",0.04,analytical or derived from analytical,4,104,0.04,0.0416,mg,1,apply exact SR Legacy fallback
+cucumbers,Vitamin B-12,µg,exact,168409,"Cucumber, with peel, raw",0,source metadata not specified,0,104,0,0,mg,1000,apply exact SR Legacy fallback
+cucumbers,"Vitamin A, RAE",µg RAE,exact,168409,"Cucumber, with peel, raw",5,calculated or imputed,0,104,0.00546,0.0052,mg,1000,apply exact SR Legacy fallback
+cucumbers,"Vitamin C, total ascorbic acid",mg,exact,168409,"Cucumber, with peel, raw",2.8,analytical or derived from analytical,4,104,2.91,2.912,mg,1,apply exact SR Legacy fallback
+cucumbers,Vitamin D (D2 + D3),µg,exact,168409,"Cucumber, with peel, raw",0,source metadata not specified,0,104,0,0,mg,1000,apply exact SR Legacy fallback
+cucumbers,Vitamin E (alpha-tocopherol),mg,exact,168409,"Cucumber, with peel, raw",0.03,source metadata not specified,5,104,0.03,0.0312,mg,1,apply exact SR Legacy fallback
+cucumbers,Vitamin K (phylloquinone),µg,exact,168409,"Cucumber, with peel, raw",16.4,analytical or derived from analytical,4,104,0.01706,0.017056,mg,1000,apply exact SR Legacy fallback
+red onion,Energy,kcal,approximate,170000,"Onions, raw",40,calculated or imputed,0,210,92.4,92.4,kcal,1,retain: approximate food identity
+red onion,Protein,g,approximate,170000,"Onions, raw",1.1,source metadata not specified,25,210,2.86,2.86,g,1,retain: approximate food identity
+red onion,Total lipid (fat),g,approximate,170000,"Onions, raw",0.1,source metadata not specified,22,210,0.4,0.4,g,1,retain: approximate food identity
+red onion,"Carbohydrate, by difference",g,approximate,170000,"Onions, raw",9.34,calculated or imputed,0,210,21.31,21.31,g,1,retain: approximate food identity
+red onion,"Fiber, total dietary",g,approximate,170000,"Onions, raw",1.7,source metadata not specified,10,210,2.94,2.94,g,1,retain: approximate food identity
+red onion,"Calcium, Ca",mg,approximate,170000,"Onions, raw",23,source metadata not specified,89,210,46.2,46.2,mg,1,retain: approximate food identity
+red onion,"Copper, Cu",mg,approximate,170000,"Onions, raw",0.039,source metadata not specified,86,210,0.14,0.14,mg,1,retain: approximate food identity
+red onion,"Iron, Fe",mg,approximate,170000,"Onions, raw",0.21,source metadata not specified,90,210,0.5,0.5,mg,1,retain: approximate food identity
+red onion,"Magnesium, Mg",mg,approximate,170000,"Onions, raw",10,source metadata not specified,90,210,23.1,23.1,mg,1,retain: approximate food identity
+red onion,"Manganese, Mn",mg,approximate,170000,"Onions, raw",0.129,source metadata not specified,89,210,0.32,0.32,mg,1,retain: approximate food identity
+red onion,"Phosphorus, P",mg,approximate,170000,"Onions, raw",29,source metadata not specified,89,210,73.5,73.5,mg,1,retain: approximate food identity
+red onion,"Potassium, K",mg,approximate,170000,"Onions, raw",146,source metadata not specified,89,210,348.6,348.6,mg,1,retain: approximate food identity
+red onion,"Selenium, Se",µg,approximate,170000,"Onions, raw",0.5,source metadata not specified,49,210,0.00126,0.00126,mg,1000,retain: approximate food identity
+red onion,"Sodium, Na",mg,approximate,170000,"Onions, raw",4,source metadata not specified,81,210,6.3,6.3,mg,1,retain: approximate food identity
+red onion,"Zinc, Zn",mg,approximate,170000,"Onions, raw",0.17,source metadata not specified,90,210,0.44,0.44,mg,1,retain: approximate food identity
+red onion,Thiamin,mg,approximate,170000,"Onions, raw",0.046,source metadata not specified,25,210,0.09,0.09,mg,1,retain: approximate food identity
+red onion,Riboflavin,mg,approximate,170000,"Onions, raw",0.027,source metadata not specified,12,210,0.05,0.05,mg,1,retain: approximate food identity
+red onion,Niacin,mg,approximate,170000,"Onions, raw",0.116,source metadata not specified,15,210,0.35,0.35,mg,1,retain: approximate food identity
+red onion,Vitamin B-6,mg,approximate,170000,"Onions, raw",0.12,source metadata not specified,25,210,0.27,0.27,mg,1,retain: approximate food identity
+red onion,Vitamin B-12,µg,approximate,170000,"Onions, raw",0,source metadata not specified,0,210,0,0,mg,1000,retain: approximate food identity
+red onion,"Vitamin A, RAE",µg RAE,approximate,170000,"Onions, raw",0,calculated or imputed,0,210,0.00021,0.00021,mg,1000,retain: approximate food identity
+red onion,"Vitamin C, total ascorbic acid",mg,approximate,170000,"Onions, raw",7.4,source metadata not specified,17,210,10.92,10.92,mg,1,retain: approximate food identity
+red onion,Vitamin D (D2 + D3),µg,approximate,170000,"Onions, raw",0,source metadata not specified,0,210,0,0,mg,1000,retain: approximate food identity
+red onion,Vitamin E (alpha-tocopherol),mg,approximate,170000,"Onions, raw",0.02,source metadata not specified,5,210,0.04,0.04,mg,1,retain: approximate food identity
+red onion,Vitamin K (phylloquinone),µg,approximate,170000,"Onions, raw",0.4,source metadata not specified,9,210,0.00105,0.00105,mg,1000,retain: approximate food identity
+pine nuts,Energy,kcal,exact,170591,"Nuts, pine nuts, dried",673,calculated or imputed,0,100,673,673,kcal,1,apply exact SR Legacy fallback
+pine nuts,Protein,g,exact,170591,"Nuts, pine nuts, dried",13.69,analytical or derived from analytical,8,100,13.69,13.69,g,1,apply exact SR Legacy fallback
+pine nuts,Total lipid (fat),g,exact,170591,"Nuts, pine nuts, dried",68.37,analytical or derived from analytical,8,100,68.37,68.37,g,1,apply exact SR Legacy fallback
+pine nuts,"Carbohydrate, by difference",g,exact,170591,"Nuts, pine nuts, dried",13.08,calculated or imputed,0,100,13.08,13.08,g,1,apply exact SR Legacy fallback
+pine nuts,"Fiber, total dietary",g,exact,170591,"Nuts, pine nuts, dried",3.7,analytical or derived from analytical,5,100,3.7,3.7,g,1,apply exact SR Legacy fallback
+pine nuts,"Calcium, Ca",mg,exact,170591,"Nuts, pine nuts, dried",16,analytical or derived from analytical,8,100,16,16,mg,1,apply exact SR Legacy fallback
+pine nuts,"Copper, Cu",mg,exact,170591,"Nuts, pine nuts, dried",1.324,analytical or derived from analytical,8,100,1.32,1.324,mg,1,apply exact SR Legacy fallback
+pine nuts,"Iron, Fe",mg,exact,170591,"Nuts, pine nuts, dried",5.53,analytical or derived from analytical,8,100,5.53,5.53,mg,1,apply exact SR Legacy fallback
+pine nuts,"Magnesium, Mg",mg,exact,170591,"Nuts, pine nuts, dried",251,analytical or derived from analytical,8,100,251,251,mg,1,apply exact SR Legacy fallback
+pine nuts,"Manganese, Mn",mg,exact,170591,"Nuts, pine nuts, dried",8.802,analytical or derived from analytical,8,100,8.8,8.802,mg,1,apply exact SR Legacy fallback
+pine nuts,"Phosphorus, P",mg,exact,170591,"Nuts, pine nuts, dried",575,analytical or derived from analytical,8,100,575,575,mg,1,apply exact SR Legacy fallback
+pine nuts,"Potassium, K",mg,exact,170591,"Nuts, pine nuts, dried",597,analytical or derived from analytical,8,100,597,597,mg,1,apply exact SR Legacy fallback
+pine nuts,"Selenium, Se",µg,exact,170591,"Nuts, pine nuts, dried",0.7,analytical or derived from analytical,4,100,0.0007,0.0007,mg,1000,apply exact SR Legacy fallback
+pine nuts,"Sodium, Na",mg,exact,170591,"Nuts, pine nuts, dried",2,analytical or derived from analytical,4,100,2,2,mg,1,apply exact SR Legacy fallback
+pine nuts,"Zinc, Zn",mg,exact,170591,"Nuts, pine nuts, dried",6.45,analytical or derived from analytical,8,100,6.45,6.45,mg,1,apply exact SR Legacy fallback
+pine nuts,Thiamin,mg,exact,170591,"Nuts, pine nuts, dried",0.364,analytical or derived from analytical,8,100,0.4,0.364,mg,1,apply exact SR Legacy fallback
+pine nuts,Riboflavin,mg,exact,170591,"Nuts, pine nuts, dried",0.227,analytical or derived from analytical,4,100,0.2,0.227,mg,1,apply exact SR Legacy fallback
+pine nuts,Niacin,mg,exact,170591,"Nuts, pine nuts, dried",4.387,analytical or derived from analytical,8,100,4.4,4.387,mg,1,apply exact SR Legacy fallback
+pine nuts,Vitamin B-6,mg,exact,170591,"Nuts, pine nuts, dried",0.094,analytical or derived from analytical,8,100,0.1,0.094,mg,1,apply exact SR Legacy fallback
+pine nuts,Vitamin B-12,µg,exact,170591,"Nuts, pine nuts, dried",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+pine nuts,"Vitamin A, RAE",µg RAE,exact,170591,"Nuts, pine nuts, dried",1,calculated or imputed,0,100,0.00145,0.001,mg,1000,apply exact SR Legacy fallback
+pine nuts,"Vitamin C, total ascorbic acid",mg,exact,170591,"Nuts, pine nuts, dried",0.8,analytical or derived from analytical,7,100,0.8,0.8,mg,1,apply exact SR Legacy fallback
+pine nuts,Vitamin D (D2 + D3),µg,exact,170591,"Nuts, pine nuts, dried",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+pine nuts,Vitamin E (alpha-tocopherol),mg,exact,170591,"Nuts, pine nuts, dried",9.33,analytical or derived from analytical,4,100,9.3,9.33,mg,1,apply exact SR Legacy fallback
+pine nuts,Vitamin K (phylloquinone),µg,exact,170591,"Nuts, pine nuts, dried",53.9,analytical or derived from analytical,7,100,0.00054,0.0539,mg,1000,apply exact SR Legacy fallback
+pumpkin seeds,Energy,kcal,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",559,calculated or imputed,0,32.25,180.28,180.2775,kcal,1,apply exact SR Legacy fallback
+pumpkin seeds,Protein,g,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",30.23,analytical or derived from analytical,3,32.25,9.75,9.749175,g,1,apply exact SR Legacy fallback
+pumpkin seeds,Total lipid (fat),g,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",49.05,analytical or derived from analytical,3,32.25,15.82,15.818625,g,1,apply exact SR Legacy fallback
+pumpkin seeds,"Carbohydrate, by difference",g,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",10.71,calculated or imputed,0,32.25,3.45,3.453975,g,1,apply exact SR Legacy fallback
+pumpkin seeds,"Fiber, total dietary",g,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",6,analytical or derived from analytical,3,32.25,1.94,1.935,g,1,apply exact SR Legacy fallback
+pumpkin seeds,"Calcium, Ca",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",46,analytical or derived from analytical,3,32.25,14.84,14.835,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Copper, Cu",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",1.343,analytical or derived from analytical,3,32.25,0.43,0.4331175,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Iron, Fe",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",8.82,analytical or derived from analytical,3,32.25,2.84,2.84445,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Magnesium, Mg",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",592,analytical or derived from analytical,3,32.25,190.92,190.92,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Manganese, Mn",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",4.543,analytical or derived from analytical,3,32.25,1.47,1.4651175,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Phosphorus, P",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",1233,analytical or derived from analytical,3,32.25,397.64,397.6425,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Potassium, K",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",809,analytical or derived from analytical,3,32.25,260.9,260.9025,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Selenium, Se",µg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",9.4,analytical or derived from analytical,2,32.25,0.00303,0.0030315,mg,1000,apply exact SR Legacy fallback
+pumpkin seeds,"Sodium, Na",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",7,analytical or derived from analytical,3,32.25,2.26,2.2575,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,"Zinc, Zn",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",7.81,analytical or derived from analytical,3,32.25,2.52,2.518725,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Thiamin,mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",0.273,analytical or derived from analytical,3,32.25,0.09,0.0880425,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Riboflavin,mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",0.153,analytical or derived from analytical,3,32.25,0.05,0.0493425,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Niacin,mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",4.987,analytical or derived from analytical,3,32.25,1.61,1.6083075,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Vitamin B-6,mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",0.143,analytical or derived from analytical,3,32.25,0.05,0.0461175,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Vitamin B-12,µg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",0,source metadata not specified,0,32.25,0,0,mg,1000,apply exact SR Legacy fallback
+pumpkin seeds,"Vitamin A, RAE",µg RAE,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",1,analytical or derived from analytical,1,32.25,0.000258,0.0003225,mg,1000,apply exact SR Legacy fallback
+pumpkin seeds,"Vitamin C, total ascorbic acid",mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",1.9,source metadata not specified,0,32.25,0.61,0.61275,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Vitamin D (D2 + D3),µg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",0,source metadata not specified,0,32.25,0,0,mg,1000,apply exact SR Legacy fallback
+pumpkin seeds,Vitamin E (alpha-tocopherol),mg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",2.18,analytical or derived from analytical,3,32.25,0.7,0.70305,mg,1,apply exact SR Legacy fallback
+pumpkin seeds,Vitamin K (phylloquinone),µg,exact,170556,"Seeds, pumpkin and squash seed kernels, dried",7.3,analytical or derived from analytical,3,32.25,0.00235,0.00235425,mg,1000,apply exact SR Legacy fallback
+chia seeds,Energy,kcal,exact,170554,"Seeds, chia seeds, dried",486,calculated or imputed,0,100,486,486,kcal,1,apply exact SR Legacy fallback
+chia seeds,Protein,g,exact,170554,"Seeds, chia seeds, dried",16.54,analytical or derived from analytical,21,100,16.54,16.54,g,1,apply exact SR Legacy fallback
+chia seeds,Total lipid (fat),g,exact,170554,"Seeds, chia seeds, dried",30.74,analytical or derived from analytical,24,100,30.74,30.74,g,1,apply exact SR Legacy fallback
+chia seeds,"Carbohydrate, by difference",g,exact,170554,"Seeds, chia seeds, dried",42.12,calculated or imputed,0,100,42.12,42.12,g,1,apply exact SR Legacy fallback
+chia seeds,"Fiber, total dietary",g,exact,170554,"Seeds, chia seeds, dried",34.4,analytical or derived from analytical,2,100,34.4,34.4,g,1,apply exact SR Legacy fallback
+chia seeds,"Calcium, Ca",mg,exact,170554,"Seeds, chia seeds, dried",631,analytical or derived from analytical,2,100,631.4,631,mg,1,apply exact SR Legacy fallback
+chia seeds,"Copper, Cu",mg,exact,170554,"Seeds, chia seeds, dried",0.924,source metadata not specified,3,100,0.924,0.924,mg,1,apply exact SR Legacy fallback
+chia seeds,"Iron, Fe",mg,exact,170554,"Seeds, chia seeds, dried",7.72,analytical or derived from analytical,2,100,7.72,7.72,mg,1,apply exact SR Legacy fallback
+chia seeds,"Magnesium, Mg",mg,exact,170554,"Seeds, chia seeds, dried",335,analytical or derived from analytical,2,100,335,335,mg,1,apply exact SR Legacy fallback
+chia seeds,"Manganese, Mn",mg,exact,170554,"Seeds, chia seeds, dried",2.723,source metadata not specified,3,100,2.723,2.723,mg,1,apply exact SR Legacy fallback
+chia seeds,"Phosphorus, P",mg,exact,170554,"Seeds, chia seeds, dried",860,source metadata not specified,4,100,860,860,mg,1,apply exact SR Legacy fallback
+chia seeds,"Potassium, K",mg,exact,170554,"Seeds, chia seeds, dried",407,source metadata not specified,3,100,407,407,mg,1,apply exact SR Legacy fallback
+chia seeds,"Selenium, Se",µg,exact,170554,"Seeds, chia seeds, dried",55.2,analytical or derived from analytical,2,100,0.0552,0.0552,mg,1000,apply exact SR Legacy fallback
+chia seeds,"Sodium, Na",mg,exact,170554,"Seeds, chia seeds, dried",16,source metadata not specified,3,100,16,16,mg,1,apply exact SR Legacy fallback
+chia seeds,"Zinc, Zn",mg,exact,170554,"Seeds, chia seeds, dried",4.58,source metadata not specified,3,100,4.58,4.58,mg,1,apply exact SR Legacy fallback
+chia seeds,Thiamin,mg,exact,170554,"Seeds, chia seeds, dried",0.62,analytical or derived from analytical,2,100,0.62,0.62,mg,1,apply exact SR Legacy fallback
+chia seeds,Riboflavin,mg,exact,170554,"Seeds, chia seeds, dried",0.17,analytical or derived from analytical,2,100,0.17,0.17,mg,1,apply exact SR Legacy fallback
+chia seeds,Niacin,mg,exact,170554,"Seeds, chia seeds, dried",8.83,analytical or derived from analytical,2,100,8.83,8.83,mg,1,apply exact SR Legacy fallback
+chia seeds,Vitamin B-6,mg,exact,170554,"Seeds, chia seeds, dried",,not reported,,100,0,0,mg,1,retain: SR Legacy does not report value
+chia seeds,Vitamin B-12,µg,exact,170554,"Seeds, chia seeds, dried",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+chia seeds,"Vitamin A, RAE",µg RAE,exact,170554,"Seeds, chia seeds, dried",,not reported,,100,0.0027,0.0027,mg,1000,retain: SR Legacy does not report value
+chia seeds,"Vitamin C, total ascorbic acid",mg,exact,170554,"Seeds, chia seeds, dried",1.6,analytical or derived from analytical,2,100,1.6,1.6,mg,1,apply exact SR Legacy fallback
+chia seeds,Vitamin D (D2 + D3),µg,exact,170554,"Seeds, chia seeds, dried",,not reported,,100,0,0,mg,1000,retain: SR Legacy does not report value
+chia seeds,Vitamin E (alpha-tocopherol),mg,exact,170554,"Seeds, chia seeds, dried",0.5,analytical or derived from analytical,1,100,0.5,0.5,mg,1,apply exact SR Legacy fallback
+chia seeds,Vitamin K (phylloquinone),µg,exact,170554,"Seeds, chia seeds, dried",,not reported,,100,0,0,mg,1000,retain: SR Legacy does not report value
+sunflower seeds,Energy,kcal,exact,170562,"Seeds, sunflower seed kernels, dried",584,calculated or imputed,0,100,584,584,kcal,1,apply exact SR Legacy fallback
+sunflower seeds,Protein,g,exact,170562,"Seeds, sunflower seed kernels, dried",20.78,analytical or derived from analytical,2,100,20.8,20.78,g,1,apply exact SR Legacy fallback
+sunflower seeds,Total lipid (fat),g,exact,170562,"Seeds, sunflower seed kernels, dried",51.46,analytical or derived from analytical,2,100,51.5,51.46,g,1,apply exact SR Legacy fallback
+sunflower seeds,"Carbohydrate, by difference",g,exact,170562,"Seeds, sunflower seed kernels, dried",20,calculated or imputed,0,100,20,20,g,1,apply exact SR Legacy fallback
+sunflower seeds,"Fiber, total dietary",g,exact,170562,"Seeds, sunflower seed kernels, dried",8.6,analytical or derived from analytical,5,100,8.6,8.6,g,1,apply exact SR Legacy fallback
+sunflower seeds,"Calcium, Ca",mg,exact,170562,"Seeds, sunflower seed kernels, dried",78,analytical or derived from analytical,2,100,78,78,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Copper, Cu",mg,exact,170562,"Seeds, sunflower seed kernels, dried",1.8,analytical or derived from analytical,2,100,1.8,1.8,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Iron, Fe",mg,exact,170562,"Seeds, sunflower seed kernels, dried",5.25,analytical or derived from analytical,2,100,5.2,5.25,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Magnesium, Mg",mg,exact,170562,"Seeds, sunflower seed kernels, dried",325,analytical or derived from analytical,2,100,325,325,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Manganese, Mn",mg,exact,170562,"Seeds, sunflower seed kernels, dried",1.95,analytical or derived from analytical,2,100,1.9,1.95,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Phosphorus, P",mg,exact,170562,"Seeds, sunflower seed kernels, dried",660,analytical or derived from analytical,2,100,660,660,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Potassium, K",mg,exact,170562,"Seeds, sunflower seed kernels, dried",645,analytical or derived from analytical,2,100,645,645,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Selenium, Se",µg,exact,170562,"Seeds, sunflower seed kernels, dried",53,analytical or derived from analytical,11,100,0.053,0.053,mg,1000,apply exact SR Legacy fallback
+sunflower seeds,"Sodium, Na",mg,exact,170562,"Seeds, sunflower seed kernels, dried",9,analytical or derived from analytical,2,100,9,9,mg,1,apply exact SR Legacy fallback
+sunflower seeds,"Zinc, Zn",mg,exact,170562,"Seeds, sunflower seed kernels, dried",5,analytical or derived from analytical,2,100,5,5,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Thiamin,mg,exact,170562,"Seeds, sunflower seed kernels, dried",1.48,analytical or derived from analytical,2,100,1.5,1.48,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Riboflavin,mg,exact,170562,"Seeds, sunflower seed kernels, dried",0.355,analytical or derived from analytical,2,100,0.4,0.355,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Niacin,mg,exact,170562,"Seeds, sunflower seed kernels, dried",8.335,analytical or derived from analytical,2,100,8.3,8.335,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Vitamin B-6,mg,exact,170562,"Seeds, sunflower seed kernels, dried",1.345,analytical or derived from analytical,2,100,1.3,1.345,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Vitamin B-12,µg,exact,170562,"Seeds, sunflower seed kernels, dried",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+sunflower seeds,"Vitamin A, RAE",µg RAE,exact,170562,"Seeds, sunflower seed kernels, dried",3,calculated or imputed,0,100,0.0025,0.003,mg,1000,apply exact SR Legacy fallback
+sunflower seeds,"Vitamin C, total ascorbic acid",mg,exact,170562,"Seeds, sunflower seed kernels, dried",1.4,source metadata not specified,0,100,1.4,1.4,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Vitamin D (D2 + D3),µg,exact,170562,"Seeds, sunflower seed kernels, dried",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+sunflower seeds,Vitamin E (alpha-tocopherol),mg,exact,170562,"Seeds, sunflower seed kernels, dried",35.17,analytical or derived from analytical,5,100,33.2,35.17,mg,1,apply exact SR Legacy fallback
+sunflower seeds,Vitamin K (phylloquinone),µg,exact,170562,"Seeds, sunflower seed kernels, dried",0,analytical or derived from analytical,1,100,0,0,mg,1000,apply exact SR Legacy fallback
+shiitake mushrms,Energy,kcal,exact,169242,"Mushrooms, shiitake, raw",34,calculated or imputed,0,72.5,40.6,24.65,kcal,1,apply exact SR Legacy fallback
+shiitake mushrms,Protein,g,exact,169242,"Mushrooms, shiitake, raw",2.24,analytical or derived from analytical,4,72.5,1.13,1.624,g,1,apply exact SR Legacy fallback
+shiitake mushrms,Total lipid (fat),g,exact,169242,"Mushrooms, shiitake, raw",0.49,analytical or derived from analytical,4,72.5,0.16,0.35525,g,1,apply exact SR Legacy fallback
+shiitake mushrms,"Carbohydrate, by difference",g,exact,169242,"Mushrooms, shiitake, raw",6.79,calculated or imputed,0,72.5,10.43,4.92275,g,1,apply exact SR Legacy fallback
+shiitake mushrms,"Fiber, total dietary",g,exact,169242,"Mushrooms, shiitake, raw",2.5,analytical or derived from analytical,4,72.5,0.16,1.8125,g,1,apply exact SR Legacy fallback
+shiitake mushrms,"Calcium, Ca",mg,exact,169242,"Mushrooms, shiitake, raw",2,analytical or derived from analytical,4,72.5,2.17,1.45,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Copper, Cu",mg,exact,169242,"Mushrooms, shiitake, raw",0.142,analytical or derived from analytical,4,72.5,0.65,0.10295,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Iron, Fe",mg,exact,169242,"Mushrooms, shiitake, raw",0.41,analytical or derived from analytical,4,72.5,0.32,0.29725,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Magnesium, Mg",mg,exact,169242,"Mushrooms, shiitake, raw",20,analytical or derived from analytical,4,72.5,10.15,14.5,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Manganese, Mn",mg,exact,169242,"Mushrooms, shiitake, raw",0.23,analytical or derived from analytical,4,72.5,0.15,0.16675,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Phosphorus, P",mg,exact,169242,"Mushrooms, shiitake, raw",112,analytical or derived from analytical,4,72.5,21.02,81.2,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Potassium, K",mg,exact,169242,"Mushrooms, shiitake, raw",304,analytical or derived from analytical,4,72.5,84.82,220.4,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Selenium, Se",µg,exact,169242,"Mushrooms, shiitake, raw",5.7,analytical or derived from analytical,4,72.5,0.01798,0.0041325,mg,1000,apply exact SR Legacy fallback
+shiitake mushrms,"Sodium, Na",mg,exact,169242,"Mushrooms, shiitake, raw",9,analytical or derived from analytical,4,72.5,2.9,6.525,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,"Zinc, Zn",mg,exact,169242,"Mushrooms, shiitake, raw",1.03,analytical or derived from analytical,4,72.5,0.96,0.74675,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,Thiamin,mg,exact,169242,"Mushrooms, shiitake, raw",0.015,analytical or derived from analytical,4,72.5,0.03,0.010875,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,Riboflavin,mg,exact,169242,"Mushrooms, shiitake, raw",0.217,analytical or derived from analytical,4,72.5,0.12,0.157325,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,Niacin,mg,exact,169242,"Mushrooms, shiitake, raw",3.877,analytical or derived from analytical,4,72.5,1.09,2.810825,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,Vitamin B-6,mg,exact,169242,"Mushrooms, shiitake, raw",0.293,analytical or derived from analytical,4,72.5,0.12,0.212425,mg,1,apply exact SR Legacy fallback
+shiitake mushrms,Vitamin B-12,µg,exact,169242,"Mushrooms, shiitake, raw",,not reported,,72.5,0,0,mg,1000,retain: SR Legacy does not report value
+shiitake mushrms,"Vitamin A, RAE",µg RAE,exact,169242,"Mushrooms, shiitake, raw",,not reported,,72.5,0,0,mg,1000,retain: SR Legacy does not report value
+shiitake mushrms,"Vitamin C, total ascorbic acid",mg,exact,169242,"Mushrooms, shiitake, raw",,not reported,,72.5,0.22,0.22,mg,1,retain: SR Legacy does not report value
+shiitake mushrms,Vitamin D (D2 + D3),µg,exact,169242,"Mushrooms, shiitake, raw",0.4,source metadata not specified,4,72.5,0.00051,0.00029,mg,1000,apply exact SR Legacy fallback
+shiitake mushrms,Vitamin E (alpha-tocopherol),mg,exact,169242,"Mushrooms, shiitake, raw",,not reported,,72.5,0,0,mg,1,retain: SR Legacy does not report value
+shiitake mushrms,Vitamin K (phylloquinone),µg,exact,169242,"Mushrooms, shiitake, raw",,not reported,,72.5,0,0,mg,1000,retain: SR Legacy does not report value
+wht btn mushrms,Energy,kcal,exact,169251,"Mushrooms, white, raw",22,calculated or imputed,0,100,22,22,kcal,1,apply exact SR Legacy fallback
+wht btn mushrms,Protein,g,exact,169251,"Mushrooms, white, raw",3.09,source metadata not specified,33,100,3.09,3.09,g,1,apply exact SR Legacy fallback
+wht btn mushrms,Total lipid (fat),g,exact,169251,"Mushrooms, white, raw",0.34,source metadata not specified,33,100,0.34,0.34,g,1,apply exact SR Legacy fallback
+wht btn mushrms,"Carbohydrate, by difference",g,exact,169251,"Mushrooms, white, raw",3.26,calculated or imputed,0,100,3.26,3.26,g,1,apply exact SR Legacy fallback
+wht btn mushrms,"Fiber, total dietary",g,exact,169251,"Mushrooms, white, raw",1,source metadata not specified,3,100,1,1,g,1,apply exact SR Legacy fallback
+wht btn mushrms,"Calcium, Ca",mg,exact,169251,"Mushrooms, white, raw",3,source metadata not specified,52,100,3,3,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Copper, Cu",mg,exact,169251,"Mushrooms, white, raw",0.318,source metadata not specified,53,100,0.318,0.318,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Iron, Fe",mg,exact,169251,"Mushrooms, white, raw",0.5,source metadata not specified,58,100,0.5,0.5,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Magnesium, Mg",mg,exact,169251,"Mushrooms, white, raw",9,source metadata not specified,42,100,9,9,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Manganese, Mn",mg,exact,169251,"Mushrooms, white, raw",0.047,source metadata not specified,40,100,0.047,0.047,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Phosphorus, P",mg,exact,169251,"Mushrooms, white, raw",86,source metadata not specified,43,100,86,86,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Potassium, K",mg,exact,169251,"Mushrooms, white, raw",318,source metadata not specified,48,100,318,318,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Selenium, Se",µg,exact,169251,"Mushrooms, white, raw",9.3,source metadata not specified,23,100,0.0093,0.0093,mg,1000,apply exact SR Legacy fallback
+wht btn mushrms,"Sodium, Na",mg,exact,169251,"Mushrooms, white, raw",5,source metadata not specified,38,100,5,5,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,"Zinc, Zn",mg,exact,169251,"Mushrooms, white, raw",0.52,source metadata not specified,62,100,0.52,0.52,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Thiamin,mg,exact,169251,"Mushrooms, white, raw",0.081,source metadata not specified,17,100,0.08,0.081,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Riboflavin,mg,exact,169251,"Mushrooms, white, raw",0.402,source metadata not specified,14,100,0.4,0.402,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Niacin,mg,exact,169251,"Mushrooms, white, raw",3.607,source metadata not specified,17,100,3.61,3.607,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Vitamin B-6,mg,exact,169251,"Mushrooms, white, raw",0.104,source metadata not specified,16,100,0.1,0.104,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Vitamin B-12,µg,exact,169251,"Mushrooms, white, raw",0.04,analytical or derived from analytical,1,100,0,4e-05,mg,1000,apply exact SR Legacy fallback
+wht btn mushrms,"Vitamin A, RAE",µg RAE,exact,169251,"Mushrooms, white, raw",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+wht btn mushrms,"Vitamin C, total ascorbic acid",mg,exact,169251,"Mushrooms, white, raw",2.1,source metadata not specified,24,100,2.1,2.1,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Vitamin D (D2 + D3),µg,exact,169251,"Mushrooms, white, raw",0.2,source metadata not specified,5,100,0.00052,0.0002,mg,1000,apply exact SR Legacy fallback
+wht btn mushrms,Vitamin E (alpha-tocopherol),mg,exact,169251,"Mushrooms, white, raw",0.01,source metadata not specified,2,100,0,0.01,mg,1,apply exact SR Legacy fallback
+wht btn mushrms,Vitamin K (phylloquinone),µg,exact,169251,"Mushrooms, white, raw",0,analytical or derived from analytical,3,100,0,0,mg,1000,apply exact SR Legacy fallback
+brocoli,Energy,kcal,exact,170379,"Broccoli, raw",34,calculated or imputed,0,156,55,53.04,kcal,1,apply exact SR Legacy fallback
+brocoli,Protein,g,exact,170379,"Broccoli, raw",2.82,source metadata not specified,23,156,3.71,4.3992,g,1,apply exact SR Legacy fallback
+brocoli,Total lipid (fat),g,exact,170379,"Broccoli, raw",0.37,source metadata not specified,29,156,0.64,0.5772,g,1,apply exact SR Legacy fallback
+brocoli,"Carbohydrate, by difference",g,exact,170379,"Broccoli, raw",6.64,calculated or imputed,0,156,11.2,10.3584,g,1,apply exact SR Legacy fallback
+brocoli,"Fiber, total dietary",g,exact,170379,"Broccoli, raw",2.6,source metadata not specified,13,156,5.15,4.056,g,1,apply exact SR Legacy fallback
+brocoli,"Calcium, Ca",mg,exact,170379,"Broccoli, raw",47,source metadata not specified,33,156,62.4,73.32,mg,1,apply exact SR Legacy fallback
+brocoli,"Copper, Cu",mg,exact,170379,"Broccoli, raw",0.049,source metadata not specified,33,156,0.1,0.07644,mg,1,apply exact SR Legacy fallback
+brocoli,"Iron, Fe",mg,exact,170379,"Broccoli, raw",0.73,source metadata not specified,33,156,1.05,1.1388,mg,1,apply exact SR Legacy fallback
+brocoli,"Magnesium, Mg",mg,exact,170379,"Broccoli, raw",21,source metadata not specified,33,156,32.76,32.76,mg,1,apply exact SR Legacy fallback
+brocoli,"Manganese, Mn",mg,exact,170379,"Broccoli, raw",0.21,source metadata not specified,23,156,0.3,0.3276,mg,1,apply exact SR Legacy fallback
+brocoli,"Phosphorus, P",mg,exact,170379,"Broccoli, raw",66,source metadata not specified,33,156,104.52,102.96,mg,1,apply exact SR Legacy fallback
+brocoli,"Potassium, K",mg,exact,170379,"Broccoli, raw",316,source metadata not specified,37,156,457.08,492.96,mg,1,apply exact SR Legacy fallback
+brocoli,"Selenium, Se",µg,exact,170379,"Broccoli, raw",2.5,source metadata not specified,8,156,0.0025,0.0039,mg,1000,apply exact SR Legacy fallback
+brocoli,"Sodium, Na",mg,exact,170379,"Broccoli, raw",33,source metadata not specified,42,156,63.96,51.48,mg,1,apply exact SR Legacy fallback
+brocoli,"Zinc, Zn",mg,exact,170379,"Broccoli, raw",0.41,source metadata not specified,33,156,0.7,0.6396,mg,1,apply exact SR Legacy fallback
+brocoli,Thiamin,mg,exact,170379,"Broccoli, raw",0.071,source metadata not specified,23,156,0.1,0.11076,mg,1,apply exact SR Legacy fallback
+brocoli,Riboflavin,mg,exact,170379,"Broccoli, raw",0.117,source metadata not specified,23,156,0.19,0.18252,mg,1,apply exact SR Legacy fallback
+brocoli,Niacin,mg,exact,170379,"Broccoli, raw",0.639,source metadata not specified,23,156,0.86,0.99684,mg,1,apply exact SR Legacy fallback
+brocoli,Vitamin B-6,mg,exact,170379,"Broccoli, raw",0.175,source metadata not specified,23,156,0.31,0.273,mg,1,apply exact SR Legacy fallback
+brocoli,Vitamin B-12,µg,exact,170379,"Broccoli, raw",0,source metadata not specified,0,156,0,0,mg,1000,apply exact SR Legacy fallback
+brocoli,"Vitamin A, RAE",µg RAE,exact,170379,"Broccoli, raw",31,calculated or imputed,0,156,0.120744,0.04836,mg,1000,apply exact SR Legacy fallback
+brocoli,"Vitamin C, total ascorbic acid",mg,exact,170379,"Broccoli, raw",89.2,source metadata not specified,19,156,101.24,139.152,mg,1,apply exact SR Legacy fallback
+brocoli,Vitamin D (D2 + D3),µg,exact,170379,"Broccoli, raw",0,source metadata not specified,0,156,0,0,mg,1000,apply exact SR Legacy fallback
+brocoli,Vitamin E (alpha-tocopherol),mg,exact,170379,"Broccoli, raw",0.78,source metadata not specified,12,156,2.26,1.2168,mg,1,apply exact SR Legacy fallback
+brocoli,Vitamin K (phylloquinone),µg,exact,170379,"Broccoli, raw",101.6,analytical or derived from analytical,8,156,0.22012,0.158496,mg,1000,apply exact SR Legacy fallback
+bell pepper,Energy,kcal,exact,170108,"Peppers, sweet, red, raw",26,calculated or imputed,0,92,28.52,23.92,kcal,1,apply exact SR Legacy fallback
+bell pepper,Protein,g,exact,170108,"Peppers, sweet, red, raw",0.99,analytical or derived from analytical,4,92,0.91,0.9108,g,1,apply exact SR Legacy fallback
+bell pepper,Total lipid (fat),g,exact,170108,"Peppers, sweet, red, raw",0.3,analytical or derived from analytical,4,92,0.28,0.276,g,1,apply exact SR Legacy fallback
+bell pepper,"Carbohydrate, by difference",g,exact,170108,"Peppers, sweet, red, raw",6.03,calculated or imputed,0,92,5.55,5.5476,g,1,apply exact SR Legacy fallback
+bell pepper,"Fiber, total dietary",g,exact,170108,"Peppers, sweet, red, raw",2.1,calculated or imputed,0,92,1.85,1.932,g,1,apply exact SR Legacy fallback
+bell pepper,"Calcium, Ca",mg,exact,170108,"Peppers, sweet, red, raw",7,analytical or derived from analytical,4,92,6.44,6.44,mg,1,apply exact SR Legacy fallback
+bell pepper,"Copper, Cu",mg,exact,170108,"Peppers, sweet, red, raw",0.017,analytical or derived from analytical,4,92,0.02,0.01564,mg,1,apply exact SR Legacy fallback
+bell pepper,"Iron, Fe",mg,exact,170108,"Peppers, sweet, red, raw",0.43,analytical or derived from analytical,4,92,0.4,0.3956,mg,1,apply exact SR Legacy fallback
+bell pepper,"Magnesium, Mg",mg,exact,170108,"Peppers, sweet, red, raw",12,analytical or derived from analytical,4,92,11.04,11.04,mg,1,apply exact SR Legacy fallback
+bell pepper,"Manganese, Mn",mg,exact,170108,"Peppers, sweet, red, raw",0.112,analytical or derived from analytical,4,92,0.1,0.10304,mg,1,apply exact SR Legacy fallback
+bell pepper,"Phosphorus, P",mg,exact,170108,"Peppers, sweet, red, raw",26,analytical or derived from analytical,4,92,23.92,23.92,mg,1,apply exact SR Legacy fallback
+bell pepper,"Potassium, K",mg,exact,170108,"Peppers, sweet, red, raw",211,analytical or derived from analytical,4,92,194.12,194.12,mg,1,apply exact SR Legacy fallback
+bell pepper,"Selenium, Se",µg,exact,170108,"Peppers, sweet, red, raw",0.1,analytical or derived from analytical,2,92,9e-05,9.2e-05,mg,1000,apply exact SR Legacy fallback
+bell pepper,"Sodium, Na",mg,exact,170108,"Peppers, sweet, red, raw",4,calculated or imputed,0,92,3.68,3.68,mg,1,apply exact SR Legacy fallback
+bell pepper,"Zinc, Zn",mg,exact,170108,"Peppers, sweet, red, raw",0.25,analytical or derived from analytical,4,92,0.23,0.23,mg,1,apply exact SR Legacy fallback
+bell pepper,Thiamin,mg,exact,170108,"Peppers, sweet, red, raw",0.054,analytical or derived from analytical,4,92,0.05,0.04968,mg,1,apply exact SR Legacy fallback
+bell pepper,Riboflavin,mg,exact,170108,"Peppers, sweet, red, raw",0.085,analytical or derived from analytical,4,92,0.08,0.0782,mg,1,apply exact SR Legacy fallback
+bell pepper,Niacin,mg,exact,170108,"Peppers, sweet, red, raw",0.979,analytical or derived from analytical,4,92,0.9,0.90068,mg,1,apply exact SR Legacy fallback
+bell pepper,Vitamin B-6,mg,exact,170108,"Peppers, sweet, red, raw",0.291,analytical or derived from analytical,4,92,0.27,0.26772,mg,1,apply exact SR Legacy fallback
+bell pepper,Vitamin B-12,µg,exact,170108,"Peppers, sweet, red, raw",0,source metadata not specified,0,92,0,0,mg,1000,apply exact SR Legacy fallback
+bell pepper,"Vitamin A, RAE",µg RAE,exact,170108,"Peppers, sweet, red, raw",157,source metadata not specified,0,92,0.144026,0.14444,mg,1000,apply exact SR Legacy fallback
+bell pepper,"Vitamin C, total ascorbic acid",mg,exact,170108,"Peppers, sweet, red, raw",127.7,analytical or derived from analytical,4,92,117.48,117.484,mg,1,apply exact SR Legacy fallback
+bell pepper,Vitamin D (D2 + D3),µg,exact,170108,"Peppers, sweet, red, raw",0,source metadata not specified,0,92,0,0,mg,1000,apply exact SR Legacy fallback
+bell pepper,Vitamin E (alpha-tocopherol),mg,exact,170108,"Peppers, sweet, red, raw",1.58,analytical or derived from analytical,2,92,1.45,1.4536,mg,1,apply exact SR Legacy fallback
+bell pepper,Vitamin K (phylloquinone),µg,exact,170108,"Peppers, sweet, red, raw",4.9,analytical or derived from analytical,4,92,0.00451,0.004508,mg,1000,apply exact SR Legacy fallback
+egg,Energy,kcal,exact,173424,"Egg, whole, cooked, hard-boiled",155,calculated or imputed,0,50,78,77.5,kcal,1,apply exact SR Legacy fallback
+egg,Protein,g,exact,173424,"Egg, whole, cooked, hard-boiled",12.58,source metadata not specified,14,50,6.29,6.29,g,1,apply exact SR Legacy fallback
+egg,Total lipid (fat),g,exact,173424,"Egg, whole, cooked, hard-boiled",10.61,source metadata not specified,7,50,5.32,5.305,g,1,apply exact SR Legacy fallback
+egg,"Carbohydrate, by difference",g,exact,173424,"Egg, whole, cooked, hard-boiled",1.12,calculated or imputed,0,50,0.56,0.56,g,1,apply exact SR Legacy fallback
+egg,"Fiber, total dietary",g,exact,173424,"Egg, whole, cooked, hard-boiled",0,source metadata not specified,0,50,0,0,g,1,apply exact SR Legacy fallback
+egg,"Calcium, Ca",mg,exact,173424,"Egg, whole, cooked, hard-boiled",50,source metadata not specified,14,50,25,25,mg,1,apply exact SR Legacy fallback
+egg,"Copper, Cu",mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.013,source metadata not specified,14,50,0.01,0.0065,mg,1,apply exact SR Legacy fallback
+egg,"Iron, Fe",mg,exact,173424,"Egg, whole, cooked, hard-boiled",1.19,source metadata not specified,14,50,0.59,0.595,mg,1,apply exact SR Legacy fallback
+egg,"Magnesium, Mg",mg,exact,173424,"Egg, whole, cooked, hard-boiled",10,source metadata not specified,14,50,5,5,mg,1,apply exact SR Legacy fallback
+egg,"Manganese, Mn",mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.026,source metadata not specified,14,50,0.01,0.013,mg,1,apply exact SR Legacy fallback
+egg,"Phosphorus, P",mg,exact,173424,"Egg, whole, cooked, hard-boiled",172,source metadata not specified,14,50,86,86,mg,1,apply exact SR Legacy fallback
+egg,"Potassium, K",mg,exact,173424,"Egg, whole, cooked, hard-boiled",126,source metadata not specified,14,50,63,63,mg,1,apply exact SR Legacy fallback
+egg,"Selenium, Se",µg,exact,173424,"Egg, whole, cooked, hard-boiled",30.8,analytical or derived from analytical,69,50,0.0154,0.0154,mg,1000,apply exact SR Legacy fallback
+egg,"Sodium, Na",mg,exact,173424,"Egg, whole, cooked, hard-boiled",124,source metadata not specified,14,50,62,62,mg,1,apply exact SR Legacy fallback
+egg,"Zinc, Zn",mg,exact,173424,"Egg, whole, cooked, hard-boiled",1.05,source metadata not specified,14,50,0.52,0.525,mg,1,apply exact SR Legacy fallback
+egg,Thiamin,mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.066,source metadata not specified,14,50,0.03,0.033,mg,1,apply exact SR Legacy fallback
+egg,Riboflavin,mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.513,source metadata not specified,14,50,0.26,0.2565,mg,1,apply exact SR Legacy fallback
+egg,Niacin,mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.064,source metadata not specified,14,50,0.03,0.032,mg,1,apply exact SR Legacy fallback
+egg,Vitamin B-6,mg,exact,173424,"Egg, whole, cooked, hard-boiled",0.121,source metadata not specified,14,50,0.06,0.0605,mg,1,apply exact SR Legacy fallback
+egg,Vitamin B-12,µg,exact,173424,"Egg, whole, cooked, hard-boiled",1.11,source metadata not specified,14,50,0.00055,0.000555,mg,1000,apply exact SR Legacy fallback
+egg,"Vitamin A, RAE",µg RAE,exact,173424,"Egg, whole, cooked, hard-boiled",149,calculated or imputed,0,50,0.078,0.0745,mg,1000,apply exact SR Legacy fallback
+egg,"Vitamin C, total ascorbic acid",mg,exact,173424,"Egg, whole, cooked, hard-boiled",0,source metadata not specified,2,50,0,0,mg,1,apply exact SR Legacy fallback
+egg,Vitamin D (D2 + D3),µg,exact,173424,"Egg, whole, cooked, hard-boiled",2.2,source metadata not specified,0,50,0.0011,0.0011,mg,1000,apply exact SR Legacy fallback
+egg,Vitamin E (alpha-tocopherol),mg,exact,173424,"Egg, whole, cooked, hard-boiled",1.03,calculated or imputed,0,50,0.87,0.515,mg,1,apply exact SR Legacy fallback
+egg,Vitamin K (phylloquinone),µg,exact,173424,"Egg, whole, cooked, hard-boiled",0.3,calculated or imputed,0,50,0.00015,0.00015,mg,1000,apply exact SR Legacy fallback
+chedar cheese,Energy,kcal,approximate,170899,"Cheese, cheddar, sharp, sliced",410,calculated or imputed,0,28.4,114,114,kcal,1,retain: approximate food identity
+chedar cheese,Protein,g,approximate,170899,"Cheese, cheddar, sharp, sliced",24.25,analytical or derived from analytical,18,28.4,7.06,7.06,g,1,retain: approximate food identity
+chedar cheese,Total lipid (fat),g,approximate,170899,"Cheese, cheddar, sharp, sliced",33.82,analytical or derived from analytical,18,28.4,9.23,9.23,g,1,retain: approximate food identity
+chedar cheese,"Carbohydrate, by difference",g,approximate,170899,"Cheese, cheddar, sharp, sliced",2.13,calculated or imputed,0,28.4,0.36,0.36,g,1,retain: approximate food identity
+chedar cheese,"Fiber, total dietary",g,approximate,170899,"Cheese, cheddar, sharp, sliced",0,source metadata not specified,0,28.4,0,0,g,1,retain: approximate food identity
+chedar cheese,"Calcium, Ca",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",711,analytical or derived from analytical,18,28.4,204.4,204.4,mg,1,retain: approximate food identity
+chedar cheese,"Copper, Cu",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.035,analytical or derived from analytical,18,28.4,0.01,0.01,mg,1,retain: approximate food identity
+chedar cheese,"Iron, Fe",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.16,analytical or derived from analytical,18,28.4,0.19,0.19,mg,1,retain: approximate food identity
+chedar cheese,"Magnesium, Mg",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",27,analytical or derived from analytical,18,28.4,7.94,7.94,mg,1,retain: approximate food identity
+chedar cheese,"Manganese, Mn",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.024,analytical or derived from analytical,18,28.4,0,0,mg,1,retain: approximate food identity
+chedar cheese,"Phosphorus, P",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",460,analytical or derived from analytical,18,28.4,145.15,145.15,mg,1,retain: approximate food identity
+chedar cheese,"Potassium, K",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",76,analytical or derived from analytical,18,28.4,27.78,27.78,mg,1,retain: approximate food identity
+chedar cheese,"Selenium, Se",µg,approximate,170899,"Cheese, cheddar, sharp, sliced",28.3,analytical or derived from analytical,9,28.4,0.00394,0.00394,mg,1000,retain: approximate food identity
+chedar cheese,"Sodium, Na",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",644,analytical or derived from analytical,18,28.4,176.05,176.05,mg,1,retain: approximate food identity
+chedar cheese,"Zinc, Zn",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",3.74,analytical or derived from analytical,18,28.4,0.88,0.88,mg,1,retain: approximate food identity
+chedar cheese,Thiamin,mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.027,analytical or derived from analytical,9,28.4,0.01,0.01,mg,1,retain: approximate food identity
+chedar cheese,Riboflavin,mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.434,analytical or derived from analytical,9,28.4,0.11,0.11,mg,1,retain: approximate food identity
+chedar cheese,Niacin,mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.039,analytical or derived from analytical,9,28.4,0.02,0.02,mg,1,retain: approximate food identity
+chedar cheese,Vitamin B-6,mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.075,analytical or derived from analytical,9,28.4,0.02,0.02,mg,1,retain: approximate food identity
+chedar cheese,Vitamin B-12,µg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.88,analytical or derived from analytical,9,28.4,0.00024,0.00024,mg,1000,retain: approximate food identity
+chedar cheese,"Vitamin A, RAE",µg RAE,approximate,170899,"Cheese, cheddar, sharp, sliced",263,calculated or imputed,0,28.4,0.072435,0.072435,mg,1000,retain: approximate food identity
+chedar cheese,"Vitamin C, total ascorbic acid",mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0,source metadata not specified,0,28.4,0,0,mg,1,retain: approximate food identity
+chedar cheese,Vitamin D (D2 + D3),µg,approximate,170899,"Cheese, cheddar, sharp, sliced",1,calculated or imputed,0,28.4,0.00017,0.00017,mg,1000,retain: approximate food identity
+chedar cheese,Vitamin E (alpha-tocopherol),mg,approximate,170899,"Cheese, cheddar, sharp, sliced",0.78,analytical or derived from analytical,9,28.4,0.12,0.12,mg,1,retain: approximate food identity
+chedar cheese,Vitamin K (phylloquinone),µg,approximate,170899,"Cheese, cheddar, sharp, sliced",2.4,analytical or derived from analytical,2,28.4,0.00079,0.00079,mg,1000,retain: approximate food identity
+UV-exposed portabella mushrooms,Energy,kcal,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",22,calculated or imputed,0,100,22,22,kcal,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Protein,g,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",2.11,analytical or derived from analytical,5,100,3.09,2.11,g,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Total lipid (fat),g,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.35,analytical or derived from analytical,5,100,0.34,0.35,g,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Carbohydrate, by difference",g,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",3.87,calculated or imputed,0,100,3.26,3.87,g,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Fiber, total dietary",g,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",1.3,analytical or derived from analytical,5,100,1,1.3,g,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Calcium, Ca",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",3,analytical or derived from analytical,5,100,3,3,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Copper, Cu",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.286,analytical or derived from analytical,5,100,0.318,0.286,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Iron, Fe",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.31,analytical or derived from analytical,5,100,0.5,0.31,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Magnesium, Mg",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",10,source metadata not specified,4,100,9,10,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Manganese, Mn",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.069,analytical or derived from analytical,5,100,0.047,0.069,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Phosphorus, P",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",108,analytical or derived from analytical,5,100,86,108,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Potassium, K",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",364,analytical or derived from analytical,5,100,318,364,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Selenium, Se",µg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",18.6,analytical or derived from analytical,5,100,0.0093,0.0186,mg,1000,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Sodium, Na",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",9,analytical or derived from analytical,5,100,5,9,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Zinc, Zn",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.53,analytical or derived from analytical,5,100,0.52,0.53,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Thiamin,mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.059,analytical or derived from analytical,5,100,0.08,0.059,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Riboflavin,mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.13,analytical or derived from analytical,5,100,0.4,0.13,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Niacin,mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",4.494,analytical or derived from analytical,5,100,3.61,4.494,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Vitamin B-6,mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.148,analytical or derived from analytical,5,100,0.1,0.148,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Vitamin B-12,µg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.05,analytical or derived from analytical,1,100,0,5e-05,mg,1000,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Vitamin A, RAE",µg RAE,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0,source metadata not specified,0,100,0,0,mg,1000,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,"Vitamin C, total ascorbic acid",mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0,source metadata not specified,0,100,2.1,0,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Vitamin D (D2 + D3),µg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",28.4,source metadata not specified,0,100,0.0284,0.0284,mg,1000,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Vitamin E (alpha-tocopherol),mg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0.02,analytical or derived from analytical,2,100,0,0.02,mg,1,apply exact SR Legacy fallback
+UV-exposed portabella mushrooms,Vitamin K (phylloquinone),µg,exact,170143,"Mushrooms, portabella, exposed to ultraviolet light, raw",0,analytical or derived from analytical,2,100,0,0,mg,1000,apply exact SR Legacy fallback
+roasted chicken leg quarter,Energy,kcal,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",184,calculated or imputed,0,100,184,184,kcal,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Protein,g,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",24.03,analytical or derived from analytical,0,100,24.03,24.03,g,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Total lipid (fat),g,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",8.99,analytical or derived from analytical,0,100,8.99,8.99,g,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Carbohydrate, by difference",g,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0,calculated or imputed,0,100,0,0,g,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Fiber, total dietary",g,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0,calculated or imputed,0,100,0,0,g,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Calcium, Ca",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",12,analytical or derived from analytical,0,100,12,12,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Copper, Cu",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.061,analytical or derived from analytical,0,100,0.061,0.061,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Iron, Fe",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",1.09,analytical or derived from analytical,0,100,1.09,1.09,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Magnesium, Mg",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",23,analytical or derived from analytical,0,100,23,23,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Manganese, Mn",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.02,analytical or derived from analytical,0,100,0.02,0.02,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Phosphorus, P",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",202,analytical or derived from analytical,0,100,202,202,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Potassium, K",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",264,analytical or derived from analytical,0,100,264,264,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Selenium, Se",µg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",25.7,calculated or imputed,0,100,0.0257,0.0257,mg,1000,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Sodium, Na",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",98,analytical or derived from analytical,0,100,98,98,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Zinc, Zn",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",2.07,analytical or derived from analytical,0,100,2.07,2.07,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Thiamin,mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.09,analytical or derived from analytical,0,100,0.09,0.09,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Riboflavin,mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.187,analytical or derived from analytical,0,100,0.187,0.187,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Niacin,mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",6.034,analytical or derived from analytical,0,100,6.034,6.034,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Vitamin B-6,mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.413,analytical or derived from analytical,0,100,0.413,0.413,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Vitamin B-12,µg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.38,analytical or derived from analytical,0,100,0.00038,0.00038,mg,1000,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Vitamin A, RAE",µg RAE,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",20,calculated or imputed,0,100,0.02,0.02,mg,1000,apply exact SR Legacy fallback
+roasted chicken leg quarter,"Vitamin C, total ascorbic acid",mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0,calculated or imputed,0,100,0,0,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Vitamin D (D2 + D3),µg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.1,analytical or derived from analytical,0,100,0.0001,0.0001,mg,1000,apply exact SR Legacy fallback
+roasted chicken leg quarter,Vitamin E (alpha-tocopherol),mg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",0.19,calculated or imputed,0,100,0.19,0.19,mg,1,apply exact SR Legacy fallback
+roasted chicken leg quarter,Vitamin K (phylloquinone),µg,exact,173617,"Chicken, broilers or fryers, leg, meat and skin, cooked, roasted",3.9,calculated or imputed,0,100,0.0039,0.0039,mg,1000,apply exact SR Legacy fallback

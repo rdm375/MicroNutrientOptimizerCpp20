@@ -29,15 +29,15 @@ OptimizationModel make_model() {
     // edible portion (thigh + drumstick + back; bone excluded). Values below
     // are per 100 g edible portion.
     constexpr std::array<double, kNutrientCount> chicken_per_100g{{
-        12.0, 0.061, 1.09, 23.0, 0.020, 202.0, 264.0, 0.0257, 98.0, 2.07,
-        0.090, 0.187, 6.034, 0.413, 0.00038, 0.020, 0.0, 0.0001, 0.190, 0.0039,
+        12, 0.061, 1.09, 23, 0.02, 202, 264, 0.0257, 98, 2.07,
+        0.09, 0.187, 6.034, 0.413, 0.00038, 0.02, 0, 0.0001, 0.19, 0.0039
     }};
     for (std::size_t i = 0; i < kNutrientCount; ++i) {
         model.fixed_nutrients[i] = chicken_per_100g[i] * model.fixed_chicken_grams / 100.0;
     }
-    model.fixed_calories = 184.0 * model.fixed_chicken_grams / 100.0;
+    model.fixed_calories = 184 * model.fixed_chicken_grams / 100.0;
     constexpr std::array<double, kMacronutrientCount> chicken_macros_per_100g{{
-        24.03, 8.99, 0.0, 0.0,
+        24.03, 8.99, 0, 0
     }};
     for (std::size_t i = 0; i < kMacronutrientCount; ++i) {
         model.fixed_macronutrients[i] = chicken_macros_per_100g[i] * model.fixed_chicken_grams / 100.0;

@@ -237,12 +237,14 @@ int main(int argc, char** argv) {
               << final_salad_mass << " g (" << std::showpos
               << mass_change << std::noshowpos << " g)\n";
 
+    std::array<double, diet::kFoodCount> initial_array{};
     std::array<double, diet::kFoodCount> lower_array{};
     std::array<double, diet::kFoodCount> upper_array{};
+    initial_array = starting_recipe;
     std::copy(lower_bounds.begin(), lower_bounds.end(), lower_array.begin());
     std::copy(upper_bounds.begin(), upper_bounds.end(), upper_array.begin());
-    const auto qp = diet::solve_with_osqp(model, lower_array, upper_array);
-    std::cout << "\nIndependent OSQP QP audit\n";
+    const auto qp = diet::solve_with_osqp(model, initial_array, lower_array, upper_array);
+    std::cout << "\nIndependent OSQP QP audit (shared NLopt primal start)\n";
     if (!qp.error.empty()) {
         std::cout << "OSQP audit error: " << qp.error << '\n';
     }
@@ -271,6 +273,14 @@ int main(int argc, char** argv) {
             std::cout << "  " << std::left << std::setw(38) << dual.label
                       << std::right << std::setw(18) << dual.value << '\n';
         }
+    } else if (!qp.status.empty()) {
+        std::cout << std::scientific << std::setprecision(3)
+                  << "OSQP objective: " << qp.objective << '\n'
+                  << "OSQP iterations: " << qp.iterations << '\n'
+                  << "OSQP primal residual: " << qp.primal_residual << '\n'
+                  << "OSQP dual residual: " << qp.dual_residual << '\n'
+                  << "OSQP duality gap: " << qp.duality_gap << '\n'
+                  << "OSQP relative KKT error: " << qp.relative_kkt_error << '\n';
     }
 
     std::cout << std::setprecision(2);

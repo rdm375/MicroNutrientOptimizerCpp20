@@ -1,8 +1,14 @@
 /build/
 /cmake-build-*/
 /data/source/*.zip
+/data/source/*.zip.sha256
 /data/reports/*
 !/data/reports/sr_legacy_audit.csv
+!/data/reports/legacy_table_before_sr_legacy_update.csv
+!/data/reports/sr_legacy_value_migration.csv
 *.o
 *.obj
 *.exe
+/.venv/
+__pycache__/
+*.py[cod]

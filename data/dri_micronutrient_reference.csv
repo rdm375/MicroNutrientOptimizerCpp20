@@ -1,0 +1,30 @@
+key,category,display_name,dri_unit,project_status,project_key,fdc_exact_name_aliases,mapping_note
+vitamin_a,vitamin,Vitamin A,µg RAE,required,Vitamin A,Vitamin A RAE,Use retinol activity equivalents (RAE).
+vitamin_c,vitamin,Vitamin C,mg,required,Vitamin C,"Vitamin C total ascorbic acid",FDC total ascorbic acid is the direct total measure.
+vitamin_d,vitamin,Vitamin D,µg,required,Vitamin D,"Vitamin D (D2 + D3)|Vitamin D (D2 + D3) International Units",FDC provides mass and IU definitions; audit reports them separately and does not combine or convert values.
+vitamin_e,vitamin,Vitamin E,mg,required,Vitamin E,Vitamin E alpha-tocopherol,Use alpha-tocopherol as the DRI-relevant form.
+vitamin_k,vitamin,Vitamin K,µg,required,Vitamin K,Vitamin K phylloquinone,Phylloquinone (K1); do not add menaquinone or dihydrophylloquinone forms without an explicit policy.
+vitamin_b1,vitamin,Vitamin B1 (thiamin),mg,required,Vitamin B1,Thiamin,Total thiamin.
+vitamin_b2,vitamin,Vitamin B2 (riboflavin),mg,required,Vitamin B2,Riboflavin,Total riboflavin.
+vitamin_b3,vitamin,Vitamin B3 (niacin),mg,required,Vitamin B3,Niacin,Niacin only; does not include niacin equivalents from tryptophan.
+vitamin_b5,vitamin,Vitamin B5 (pantothenic acid),mg,not modeled,,Pantothenic acid,DRI reference nutrient not currently represented in the optimizer.
+vitamin_b6,vitamin,Vitamin B6,mg,required,Vitamin B6,Vitamin B-6,Use FDC total vitamin B-6 when present; do not sum individual vitamers into this audit.
+vitamin_b7,vitamin,Vitamin B7 (biotin),µg,not modeled,,Biotin,DRI reference nutrient not currently represented in the optimizer.
+vitamin_b9,vitamin,Vitamin B9 (folate),µg DFE,not modeled,,Folate DFE,Use dietary folate equivalents; do not merge with folic acid or other folate forms.
+vitamin_b12,vitamin,Vitamin B12,µg,required,Vitamin B12,Vitamin B-12,Total vitamin B-12.
+choline,vitamin_related,Choline,mg,not modeled,,Choline total,Included in the DRI reference inventory; not one of the 13 vitamins.
+calcium,element,Calcium,mg,required,Calcium,"Calcium Ca",Total calcium.
+chromium,element,Chromium,µg,not modeled,,Chromium Cr,DRI reference nutrient; FDC coverage may be limited.
+copper,element,Copper,mg,required,Copper,"Copper Cu",Total copper.
+fluoride,element,Fluoride,mg,not modeled,,Fluoride F,Do not match the deprecated DO NOT USE nutrient definition.
+iodine,element,Iodine,µg,not modeled,,Iodine I,Total iodine.
+iron,element,Iron,mg,required,Iron,"Iron Fe",Total iron; heme and non-heme subfields are not added here.
+magnesium,element,Magnesium,mg,required,Magnesium,"Magnesium Mg",Total magnesium.
+manganese,element,Manganese,mg,required,Manganese,"Manganese Mn",Total manganese.
+molybdenum,element,Molybdenum,µg,not modeled,,Molybdenum Mo,DRI reference nutrient; FDC coverage may be limited.
+phosphorus,element,Phosphorus,mg,required,Phosphorus,"Phosphorus P",Total phosphorus.
+potassium,element,Potassium,mg,required,Potassium,"Potassium K",Total potassium.
+selenium,element,Selenium,µg,required,Selenium,"Selenium Se",Total selenium.
+sodium,element,Sodium,mg,tracked_only,Sodium,"Sodium Na",Tracked in reporting but not optimized.
+chloride,element,Chloride,mg,not modeled,,Chlorine Cl,"FDC nutrient 1088 is named Chlorine, Cl. This is only a candidate name mapping; verify chemical meaning before treating it as dietary chloride. Prior archive scan found it only in branded_food and none in the 257 candidate plants."
+zinc,element,Zinc,mg,required,Zinc,"Zinc Zn",Total zinc.

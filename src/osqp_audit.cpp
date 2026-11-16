@@ -35,6 +35,7 @@ std::string row_name(std::size_t nutrient) {
 } // namespace
 
 QpAuditResult solve_with_osqp(const OptimizationModel& model,
+                              const std::array<double, kFoodCount>& initial_grams,
                               const std::array<double, kFoodCount>& lower_grams,
                               const std::array<double, kFoodCount>& upper_grams) {
     QpAuditResult result;
@@ -121,6 +122,8 @@ QpAuditResult solve_with_osqp(const OptimizationModel& model,
     }
 
     settings->verbose = 0;
+    settings->adaptive_rho = 0;
+    settings->rho = 0.1;
     settings->eps_abs = 1e-9;
     settings->eps_rel = 1e-9;
     settings->max_iter = 200000;
@@ -136,6 +139,19 @@ QpAuditResult solve_with_osqp(const OptimizationModel& model,
         message << "osqp_setup failed with code " << setup_code;
         result.error = message.str();
         if (solver != nullptr) osqp_cleanup(solver);
+        return result;
+    }
+
+    std::array<OSQPFloat, n> initial_x{};
+    for (std::size_t food = 0; food < n; ++food) {
+        initial_x[food] = static_cast<OSQPFloat>(initial_grams[food] / 1000.0);
+    }
+    const OSQPInt warm_start_code = osqp_warm_start(solver, initial_x.data(), nullptr);
+    if (warm_start_code != 0) {
+        std::ostringstream message;
+        message << "osqp_warm_start failed with code " << warm_start_code;
+        result.error = message.str();
+        osqp_cleanup(solver);
         return result;
     }
 

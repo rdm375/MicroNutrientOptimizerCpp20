@@ -75,7 +75,9 @@ def cpp_array(text: str, marker: str) -> list[float]:
 def legacy_foods(header: Path) -> dict[str, list[float]]:
     text = header.read_text(encoding="utf-8")
     foods = {m.group(1): [float(x.strip()) for x in m.group(2).split(",")]
-             for m in re.finditer(r'Food\{"([^\"]+)",\s*\{([^}]*)\}', text)}
+             for m in re.finditer(
+                 r'Food\{"([^\"]+)",\s*IngredientGroup::\w+,\s*\{([^}]*)\}', text
+             )}
     if not foods:
         raise ValueError(f"No food rows parsed from {header}")
     return foods

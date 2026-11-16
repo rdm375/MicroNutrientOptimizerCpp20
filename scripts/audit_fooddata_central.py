@@ -99,7 +99,9 @@ def parse_cpp_array(text: str, marker: str) -> list[float]:
 
 def parse_legacy_foods(header: Path) -> dict[str, list[float]]:
     text = header.read_text(encoding="utf-8")
-    matches = re.finditer(r'Food\{"([^"]+)",\s*\{([^}]*)\}', text)
+    matches = re.finditer(
+        r'Food\{"([^"]+)",\s*IngredientGroup::\w+,\s*\{([^}]*)\}', text
+    )
     result = {}
     for match in matches:
         result[match.group(1)] = [float(token.strip()) for token in match.group(2).split(",")]
@@ -113,7 +115,9 @@ def add_comparison(output, ingredient, crosswalk, fdc_food, ndb_number, fdc_nutr
     fdc_id = int(crosswalk["fdc_id"])
     nutrient_by_number = fdc_nutrients.get(fdc_id, {})
     for label, (number, unit, source_index, unit_factor) in EXPECTED_NUTRIENTS.items():
-        legacy_per_100g = legacy_values[source_index] / portion_grams * 100.0 * unit_factor
+        source_value = legacy_values[source_index]
+        legacy_per_100g = source_value / portion_grams * 100.0 * unit_factor
+        legacy_source_unit = "mg" if unit_factor == 1000.0 else unit
         row = nutrient_by_number.get(number)
         if row is None or row["amount"] == "":
             fdc_per_100g = ""
@@ -122,7 +126,8 @@ def add_comparison(output, ingredient, crosswalk, fdc_food, ndb_number, fdc_nutr
             derivation = ""
             source = ""
             points = ""
-            status = "not_reported"
+            comparison_status = "not_reported"
+            review_status = "legacy value retained; SR Legacy not reported"
         else:
             fdc_per_100g = float(row["amount"])
             delta = fdc_per_100g - legacy_per_100g
@@ -132,7 +137,13 @@ def add_comparison(output, ingredient, crosswalk, fdc_food, ndb_number, fdc_nutr
             derivation = derivation_row.get("description", "")
             source = source_row.get("description", "")
             points = row.get("data_points", "")
-            status = "compared"
+            comparison_status = "compared"
+            if crosswalk.get("identity_match") != "exact":
+                review_status = "approximate identity; legacy value retained"
+            elif abs(delta) <= 1e-9:
+                review_status = "matches exact SR Legacy fallback; review source quality"
+            else:
+                review_status = "manual review: exact SR Legacy value differs"
         portion_summary = "; ".join(
             f"{p.get('amount', '')} {p.get('portion_description') or p.get('modifier', '')} "
             f"({p.get('gram_weight', '')} g)"
@@ -149,6 +160,13 @@ def add_comparison(output, ingredient, crosswalk, fdc_food, ndb_number, fdc_nutr
             "selection_note": crosswalk["selection_note"],
             "fdc_portions": portion_summary,
             "legacy_table_portion_g": f"{portion_grams:.8g}",
+            "legacy_source_value_at_portion": f"{source_value:.12g}",
+            "legacy_source_unit": legacy_source_unit,
+            "legacy_unit_conversion_factor": f"{unit_factor:.8g}",
+            "legacy_conversion_formula": (
+                f"{source_value:.12g} {legacy_source_unit} / {portion_grams:.8g} g"
+                f" * 100 g * {unit_factor:.8g} {unit}/{legacy_source_unit}"
+            ),
             "nutrient": label,
             "unit": unit,
             "legacy_per_100g": f"{legacy_per_100g:.12g}",
@@ -157,8 +175,17 @@ def add_comparison(output, ingredient, crosswalk, fdc_food, ndb_number, fdc_nutr
             "difference_pct_of_fdc": "" if relative_delta == "" else f"{relative_delta:.8g}",
             "fdc_derivation": derivation,
             "fdc_source": source,
+            "fdc_value_class": (
+            "not reported" if comparison_status == "not_reported"
+                else "analytical or derived from analytical"
+                if "analytical" in f"{derivation} {source}".casefold()
+                else "calculated or imputed"
+                if "calculat" in f"{derivation} {source}".casefold()
+                else "source metadata not specified"
+            ),
             "fdc_data_points": points,
-            "comparison_status": status,
+            "nutrient_review_status": review_status,
+            "comparison_status": comparison_status,
         })
 
 
@@ -251,7 +278,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = list(audit_rows[0])
     with args.output.open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=fieldnames)
+        writer = csv.DictWriter(stream, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(audit_rows)
     print(f"Wrote {len(audit_rows)} nutrient comparisons to {args.output}")

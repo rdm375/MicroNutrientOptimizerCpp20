@@ -28,9 +28,9 @@ struct QpAuditResult {
     int iterations = 0;
 };
 
-// Solve the same scaled-mass QP independently of NLopt and return OSQP's
-// primal solution, constraint duals, and KKT diagnostics.
+// Solve the same scaled-mass QP with OSQP from the shared NLopt primal start.
 QpAuditResult solve_with_osqp(const OptimizationModel& model,
+                              const std::array<double, kFoodCount>& initial_grams,
                               const std::array<double, kFoodCount>& lower_grams,
                               const std::array<double, kFoodCount>& upper_grams);
 

@@ -1,5 +1,12 @@
 # Diet Optimizer (C++20)
 
+**Release status: experimental, version 0.1.0.** This repository is a
+reproducible optimization experiment, not a nutritionally validated meal
+planner. The targets are a fixed exploratory profile rather than one coherent
+age/sex/life-stage DRI profile, and several hand-entered food values remain
+under source review. Do not interpret solver feasibility as validation of the
+food data or as medical nutrition advice.
+
 This project turns the selected ingredients from `salad2.py` into a constrained
 recipe optimizer. It provides a sparse profile and a diverse profile so the
 results can be compared under the same nutrient targets and calorie cap.
@@ -67,6 +74,65 @@ Because the objective is strictly convex and all constraints are linear, an
 exact primal-dual KKT point is a global optimum. OSQP reports numerical
 residuals, so these diagnostics provide a numerical optimality check rather
 than an exact symbolic proof. NLopt remains the primary recipe reported below.
+
+## Ingredient discovery and exploration
+
+The fixed sparse and diverse recipes remain the reference recipes. The
+exploration workflow searches additional salad-compatible plants, vegetables,
+fruit, mushrooms, olives, nuts, seeds, legumes, herbs, and spices without
+changing those profiles. It uses the downloadable FoodData Central Foundation
+CSV, not the API.
+
+First generate a discovery report:
+
+```sh
+make ingredient-candidates
+```
+
+Keep your reviewed CSV: rerunning `make ingredient-candidates` regenerates it
+and resets the manual review columns.
+
+This writes `data/reports/plant_candidate_review.csv`. It is only a candidate
+catalog: descriptions and category-based groups are heuristic, and no row is
+approved automatically. Review the food form and identity, then set
+`candidate_include=yes`, `identity_review=confirmed`, and realistic
+`portion_min_g` / `portion_max_g` values for each candidate to include. Do not
+use a row whose food form is unsuitable for a salad. Foundation blanks mean
+unreported, not zero, and the explorer will not accept an incomplete selected
+profile. To find possible historical records for those blanks, run:
+
+```sh
+make ingredient-fallback-candidates
+```
+
+That report lists only exact-description SR Legacy matches and the fields each
+record appears to cover. It never chooses a fallback: confirm food identity,
+food form, and nutrient applicability yourself, then copy the confirmed ID and
+exact description into the candidate review CSV. If a required field remains
+blank, that candidate cannot yet enter the optimization. When using confirmed
+SR Legacy fallbacks, obtain the archive with `make download-fooddata`.
+
+Then run the optimizer:
+
+```sh
+make explore-ingredients          # sparse base profile
+make explore-ingredients-diverse  # diverse base profile
+```
+
+The explorer uses SciPy's HiGHS linear-programming solver to globally minimize
+total salad mass subject to the existing 700 kcal salad cap, the base profile's
+portion bounds, and every required nutrient between 100% and 300% of its
+project target. Sodium is reported against the AI and CDRR reference points but
+is not constrained. It reports the fixed chicken accompaniment with the whole
+plate, macros, nutrient coverage, and data-source provenance for selected
+candidate rows. This is a mathematical optimum for the reviewed linear model;
+it is only as representative as the food identities, nutrient data, and
+human-entered portion bounds. It is an exploration tool, not a nutrition or
+safety judgment. If no feasible solution exists, it reports infeasibility and
+does not alter the stored recipes.
+
+The Python optimizer requires NumPy and SciPy. On Debian or Ubuntu,
+`make install-dependencies` installs the system packages used by the project.
 
 ## Optimizer results
 
@@ -140,10 +206,12 @@ numerical optimality check for this model, not a formal exact-arithmetic proof.
 
 ## Data caveats
 
-The original script's nutrient table and units have not been independently
-audited. In particular, the target array is a simple fixed set and does not
-vary by age, sex, pregnancy, or medical needs. This is an exploratory recipe
-model, not a clinical diet plan.
+The original script's nutrient table has an automated source comparison, but
+the ingredient-and-nutrient comparisons are still marked pending manual review.
+Several values differ materially from the selected USDA records, and the target
+array is a fixed exploratory set rather than one coherent profile that varies
+by age, sex, pregnancy, or other life-stage needs. This is an exploratory
+recipe model, not a clinical diet plan.
 
 The sodium reference points follow the National Academies' 2019 sodium and
 potassium DRI update: adult sodium AI 1,500 mg/day and adult CDRR
@@ -151,6 +219,40 @@ potassium DRI update: adult sodium AI 1,500 mg/day and adult CDRR
 [National Academies sodium DRI summary](https://nap.nationalacademies.org/resource/25353/030519DRISodiumPotassium.pdf).
 
 ### USDA FoodData Central audit
+
+#### DRI reference coverage
+
+`data/dri_micronutrient_reference.csv` is a reference inventory of the
+vitamins, choline, and elements covered by the National Academies' Dietary
+Reference Intakes (DRIs). It records units, exact FoodData Central nutrient
+name aliases, and whether this project currently optimizes, tracks, or does
+not model each item. It deliberately contains no numeric DRI target values:
+RDA/AI values depend on age, sex, and life stage, and the current optimizer
+uses a fixed exploratory target profile.
+
+Run the coverage audit after `make ingredient-candidates` has created the
+candidate review CSV:
+
+```sh
+make audit-dri-coverage
+```
+
+The audit scans the full downloadable FDC CSV archive and writes
+`data/reports/dri_fooddata_coverage.csv`. For each reference nutrient, it
+lists the exact FDC definitions matched (including FDC units), nonblank
+nutrient-record counts and distinct-food counts by FDC data type, and the
+number and percentage of reviewed plant candidates with any matching value.
+Record counts can include multiple FDC forms or aliases; candidate coverage
+counts each food once. These are availability counts only: a reported value
+does not establish food identity, completeness, analytical quality, or
+equivalence to the project's target unit. Blank values are not treated as
+zero. The audit does not modify the candidate review or optimizer data.
+
+The chloride row is intentionally provisional. FDC labels nutrient 1088
+`Chlorine, Cl`; the name alone does not establish that its measure is
+interchangeable with dietary chloride. Review the chemical definition before
+using it. The audit makes this uncertainty visible rather than silently
+mapping or optimizing the field.
 
 The optimizer's hand-entered food table is preserved. `make audit-fooddata`
 downloads the October 2026 full USDA FoodData Central CSV archive and April
@@ -201,6 +303,30 @@ release. A newer record is not automatically a better match: the food form,
 sample selection, nutrient coverage, and units still need review. The
 crosswalk and release information make each comparison reproducible.
 
+The `make audit-fooddata-sr-legacy` output is a row-by-row provenance ledger.
+For each ingredient and nutrient it records the SR Legacy FDC ID and
+description, identity-match class, reported food portions, nutrient and
+display units, the hand-entered source value and portion, the explicit
+per-100-g/unit-conversion formula, and FDC derivation/source/data-point
+metadata. `fdc_value_class` identifies analytical or analytically derived
+values, calculated/imputed values, unspecified source metadata, and unreported
+values. The audit status distinguishes values aligned to exact SR Legacy
+records, approximate identities, unreported values, and remaining differences.
+An exact identity does not establish that every laboratory value is equally
+reliable; retain the derivation, source, and data-point metadata in any review.
+
+The embedded table now uses the reported USDA SR Legacy value for each nutrient
+whose crosswalk identity is exact. Approximate matches (generic tomato, generic
+onion, and sharp sliced cheddar) and the nine unreported nutrient values remain
+at their previous values. `data/reports/legacy_table_before_sr_legacy_update.csv`
+preserves the complete before-change comparison, and
+`data/reports/sr_legacy_value_migration.csv` records every applied or retained
+row, including its identity class, source value, and reason. Preview the
+deterministic migration with `make audit-sr-legacy-migration`; applying it again
+uses that preserved baseline and is idempotent with respect to the embedded
+values. Regenerate the post-change comparison with
+`make audit-fooddata-sr-legacy`.
+
 Vitamin A is reported as retinol activity equivalents (RAE). The legacy
 plant-food IU values were previously converted with the retinol factor; they
 now use 0.05 µg RAE per IU for dietary beta-carotene, while the egg and cheddar
@@ -228,21 +354,31 @@ Sources:
 
 ## Build
 
-Requires a C++20 compiler, CMake 3.20+, pkg-config, NLopt with its C++
-interface, and OSQP 1.x. On Debian or Ubuntu, install the system packages and
-clone OSQP as in the setup commands below:
+Requires a C++20 compiler, CMake 3.20+, pkg-config, NLopt C++ 2.7.1, OSQP
+1.0.0, and Python 3.12 for the pinned ingredient-exploration environment. On
+Debian or Ubuntu:
 
 ```sh
 make install-dependencies
 mkdir -p ~/src
-git clone https://github.com/osqp/osqp.git ~/src/osqp
+git clone --depth 1 --branch v1.0.0 https://github.com/osqp/osqp.git ~/src/osqp
 make install-osqp
+make install-python-dependencies
 make compare
+make test
 ```
 
 `make install-dependencies` uses `sudo apt-get` to install system packages.
-`make install-osqp` installs OSQP under `~/.local` and can be rerun after
-updating the checkout. Override `OSQP_SOURCE` or `OSQP_PREFIX` when using
-different paths. `make compare` builds and runs both profiles. Use `make run-sparse` or
-`make run-diverse` to run one profile. The CMake project discovers
-Ubuntu/Debian's `nlopt_cxx` pkg-config module and the OSQP CMake config package.
+`make install-osqp` checks out the pinned `v1.0.0` tag and installs OSQP under
+`~/.local`. Override `OSQP_SOURCE` or `OSQP_PREFIX` for different paths. The
+Python environment pins NumPy 2.3.5 and SciPy 1.16.3; Make automatically uses
+`.venv/bin/python` when it exists. `make compare` builds and runs both profiles;
+`make test` runs C++ model checks and both end-to-end optimizer profiles. Use
+`make run-sparse` or `make run-diverse` to run one profile. CMake requires the
+exact NLopt version. OSQP's v1.0.0 installed CMake config reports version
+`0.0.0`, so CMake cannot enforce its version metadata; the Makefile setup and
+CI instead pin the source checkout to tag `v1.0.0`.
+
+GitHub Actions runs the Release build and CTest regression checks on Ubuntu
+24.04 for pushes and pull requests. CI verifies software behavior for this
+model; it does not validate the nutrition data.
