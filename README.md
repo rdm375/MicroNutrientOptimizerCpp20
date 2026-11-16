@@ -3,8 +3,11 @@
 **Release status: experimental, version 0.1.0.** This repository is a
 reproducible optimization experiment, not a nutritionally validated meal
 planner. The targets are a fixed exploratory profile rather than one coherent
-age/sex/life-stage DRI profile, and several hand-entered food values remain
-under source review. Do not interpret solver feasibility as validation of the
+age/sex/life-stage DRI profile. The embedded table now uses 366 reported
+nutrient values from exact-identity USDA SR Legacy matches. Seventy-five rows
+for approximate food identities and nine nutrient entries not reported by SR
+Legacy retain their pre-migration values; Foundation Foods mappings have not
+yet been reviewed. Do not interpret solver feasibility as validation of the
 food data or as medical nutrition advice.
 
 This project turns the selected ingredients from `salad2.py` into a constrained
@@ -35,9 +38,10 @@ results can be compared under the same nutrient targets and calorie cap.
 - There are no blanket nutrient upper limits. The original `3 * rda_min`
   ceilings were arbitrary and made feasible recipes impossible. The program
   reports how far the recipe exceeds each minimum.
-- The ingredient list adds UV-exposed mushrooms as a distinct candidate. Its
-  vitamin D value is 28.4 µg/100 g; its other nutrient values currently reuse
-  the raw white-mushroom row, so treat those values as an approximation.
+- The ingredient list includes UV-exposed portabella mushrooms as a distinct
+  candidate. Its exact-identity SR Legacy record reports 28.4 µg vitamin D per
+  100 g. Other nutrients absent from that record retain their pre-migration
+  values under the documented retention policy.
 - Egg bounds allow up to 150 g (about three large eggs) so the chicken and egg
   combination can reach the B12 target in this modeled plate.
 - `--sparse` permits zero portions, so ingredients that do not help the
@@ -138,80 +142,84 @@ The Python optimizer requires NumPy and SciPy. On Debian or Ubuntu,
 
 `make compare` was run after changing the fixed accompaniment to one 258 g
 cooked edible portion of roasted chicken leg with skin. The USDA measure
-includes thigh, drumstick, and back meat with skin; bone is excluded. The run
-used the generic 20 g per-ingredient initial guess, raised to diverse-profile
-minimums where applicable. Those starting recipes were infeasible; both final
-recipes passed the nutrient, calorie, and ingredient-bound checks.
+includes thigh, drumstick, and back meat with skin; bone is excluded. Both
+starting recipes were infeasible, and both final recipes passed the nutrient,
+calorie, and ingredient-bound checks.
 
 | Ingredient (g) | Sparse | Diverse |
 |---|---:|---:|
 | Romaine lettuce | 0.00 | 30.00 |
-| Collard greens | 0.00 | 20.00 |
-| Spinach | 431.56 | 382.65 |
+| Collard greens | 32.97 | 144.14 |
+| Spinach | 367.15 | 260.42 |
 | Roma tomatoes | 0.00 | 30.00 |
 | Cucumbers | 0.00 | 20.00 |
 | Red onion | 0.00 | 10.00 |
 | Pine nuts | 0.00 | 5.00 |
-| Pumpkin seeds | 20.55 | 10.01 |
-| Chia seeds | 2.05 | 5.00 |
-| Sunflower seeds | 24.18 | 22.05 |
+| Pumpkin seeds | 0.00 | 5.00 |
+| Chia seeds | 27.17 | 5.00 |
+| Sunflower seeds | 26.51 | 29.93 |
 | Shiitake mushrooms | 0.00 | 10.00 |
 | White button mushrooms | 0.00 | 10.00 |
 | Broccoli | 0.00 | 20.00 |
-| Bell pepper | 36.05 | 21.72 |
-| Egg | 98.32 | 98.38 |
-| Cheddar | 40.00 | 39.93 |
-| UV-exposed portabella mushrooms | 43.45 | 43.02 |
+| Bell pepper | 0.00 | 20.00 |
+| Egg | 95.47 | 100.44 |
+| Cheddar | 40.00 | 33.03 |
+| UV-exposed portabella mushrooms | 43.67 | 43.22 |
 | Roasted chicken leg with skin, edible portion | 258.00 | 258.00 |
 
 | Result | Sparse | Diverse |
 |---|---:|---:|
-| Salad mass | 696.16 g | 777.75 g |
+| Salad mass | 632.94 g | 776.18 g |
 | Salad calories | 700 kcal | 700 kcal |
 | Whole plate calories | 1,174.72 kcal | 1,174.72 kcal |
-| Sodium (tracked; AI / CDRR) | 932.37 mg (62.2% / 40.5%) | 913.50 mg (60.9% / 39.7%) |
+| Sodium (tracked; AI / CDRR) | 925.50 mg (61.7% / 40.2%) | 833.60 mg (55.6% / 36.2%) |
 
 Whole-plate macronutrients:
 
 | Macro (g) | Sparse | Diverse |
 |---|---:|---:|
-| Protein | 110.42 | 108.72 |
-| Fat | 71.20 | 69.54 |
-| Carbohydrate | 29.28 | 35.13 |
-| Fiber | 15.54 | 17.26 |
-| Net carbs | 13.74 | 17.87 |
+| Protein | 106.37 | 106.99 |
+| Fat | 70.10 | 69.85 |
+| Carbohydrate | 35.13 | 37.20 |
+| Fiber | 21.59 | 19.36 |
+| Net carbs | 13.54 | 17.84 |
 
 Both profiles met all 19 enforced minimums, including 2.4 µg B12 and 15 µg
-vitamin D. Calcium, potassium, B1, B12, C, and D are at their minimum targets.
-The sparse recipe reaches the configured 40 g cheddar upper bound. Vitamin A
-coverage is 291.76% (sparse) and 286.97% (diverse); vitamin K coverage remains
-high at 1,787.42% and 1,706.72%, respectively, largely because both profiles
-use substantial spinach. Nutrient upper limits are not part of this model.
+vitamin D. Calcium, potassium, B1, B12, and D are at their minimum targets.
+Vitamin A coverage is 233.57% (sparse) and 227.97% (diverse). Vitamin K
+coverage is 1,607.13% and 1,633.08%, respectively, largely because both
+profiles use substantial leafy greens. Nutrient upper limits are not part of
+this model.
 
 | Solver diagnostic | Sparse | Diverse |
 |---|---:|---:|
 | NLopt status | Function tolerance reached (3) | Function tolerance reached (3) |
 | Final feasibility | PASS | PASS |
 | OSQP status | Solved (1) | Solved (1) |
-| OSQP objective | 0.6961655055 | 0.7777515304 |
-| Maximum NLopt/OSQP ingredient difference | 5.684e-14 g | 2.665e-13 g |
-| OSQP primal residual | 1.567e-16 | 1.933e-16 |
-| OSQP dual residual | 8.533e-15 | 1.311e-14 |
-| OSQP relative KKT error | 8.533e-15 | 1.311e-14 |
+| OSQP objective | 0.6329456562 | 0.7761824281 |
+| Maximum NLopt/OSQP ingredient difference | 6.253e-13 g | 2.842e-13 g |
+| OSQP iterations | 4,375 | 1,975 |
+| OSQP primal residual | 1.546e-16 | 1.457e-13 |
+| OSQP dual residual | 6.798e-15 | 1.636e-14 |
+| OSQP duality gap | 9.821e-16 | -1.528e-15 |
+| OSQP relative KKT error | 6.798e-15 | 1.457e-13 |
 
-The initial points were infeasible, so the objective increased while the
-optimizer moved to feasible recipes. OSQP independently solved the same convex
-quadratic program; the small residuals and close recipe match provide a strong
-numerical optimality check for this model, not a formal exact-arithmetic proof.
+The starting points were infeasible, so the objective increased as the optimizer
+found feasible recipes. OSQP independently solved the same convex quadratic
+program from the shared NLopt primal start. The close recipe match and small
+residuals provide a numerical optimality check for this model, not a formal
+exact-arithmetic proof.
 
 ## Data caveats
 
-The original script's nutrient table has an automated source comparison, but
-the ingredient-and-nutrient comparisons are still marked pending manual review.
-Several values differ materially from the selected USDA records, and the target
-array is a fixed exploratory set rather than one coherent profile that varies
-by age, sex, pregnancy, or other life-stage needs. This is an exploratory
-recipe model, not a clinical diet plan.
+The SR Legacy migration reconciled 366 reported nutrient entries for exact
+food identities. Seventy-five rows for approximate identities and nine nutrient
+entries not reported by SR Legacy retain their pre-migration values. Foundation
+Foods mappings have not yet been reviewed. Exact identity does not establish
+analytical quality; derivation, source, and data-point metadata remain in the
+audit. The target array is a fixed exploratory set rather than one coherent
+profile that varies by age, sex, pregnancy, or other life-stage needs. This is
+an exploratory recipe model, not a clinical diet plan.
 
 The sodium reference points follow the National Academies' 2019 sodium and
 potassium DRI update: adult sodium AI 1,500 mg/day and adult CDRR
@@ -254,10 +262,12 @@ interchangeable with dietary chloride. Review the chemical definition before
 using it. The audit makes this uncertainty visible rather than silently
 mapping or optimizing the field.
 
-The optimizer's hand-entered food table is preserved. `make audit-fooddata`
-downloads the October 2026 full USDA FoodData Central CSV archive and April
-2018 SR Legacy CSV archive, then compares every legacy calorie, macro, and
-micronutrient value against the crosswalked records. It uses downloadable CSVs
+The pre-migration food table is preserved in
+`data/reports/legacy_table_before_sr_legacy_update.csv`. The embedded table uses
+reported USDA SR Legacy values for exact crosswalk identities. `make
+audit-fooddata` downloads the October 2026 full USDA FoodData Central CSV
+archive and April 2018 SR Legacy CSV archive, then compares the calorie, macro,
+and micronutrient values against the crosswalked records. It uses downloadable CSVs
 only; no API key or API call is needed. The full archive is about 463 MB
 compressed and contains the food descriptions and nutrient tables missing from
 the small Foundation-only archive. The audit streams the needed tables from the
@@ -290,13 +300,14 @@ Until a reviewed Foundation mapping is entered, the report will use SR Legacy
 fallback values and say why.
 
 The SR Legacy crosswalk is retained as the fallback and historical comparison.
-Some SR records are approximate identity matches: generic raw tomato for Roma
-tomatoes, generic raw onion for red onion, and sharp sliced cheddar for
-unspecified cheddar. The UV-exposed portabella record is an exact food match,
-but the optimizer's old row reuses white-mushroom values for most nutrients.
-The earlier audit also found a large pine-nut vitamin K discrepancy (0.54 vs
-53.9 µg/100 g) and substantial shiitake differences. These should be reviewed
-at the ingredient/nutrient level before changing optimizer values.
+Three identities are approximate: generic raw tomato for Roma tomatoes, generic
+raw onion for red onion, and sharp sliced cheddar for unspecified cheddar. The
+75 nutrient rows for these identities retain their pre-migration values. The
+exact-identity SR Legacy values for UV-exposed portabella, pine nuts, and
+shiitake have been applied wherever reported; nutrients absent from those
+records retain their prior values. The migration ledger records each applied
+and retained nutrient row. Exact food identity aligns records but does not by
+itself resolve questions about analytical source or sample coverage.
 
 Foundation Foods is updated regularly and SR Legacy is a frozen April 2018
 release. A newer record is not automatically a better match: the food form,
